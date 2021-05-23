@@ -30,8 +30,8 @@
 \expandafter{\language@yaml}
 {
   keywords={true,false,null,y,n},
-  keywordstyle=\color{darkgray}\bfseries\small,
-  basicstyle=\YAMLkeystyle\small,                                 % assuming a key comes first
+  keywordstyle=\color{darkgray}\bfseries\footnotesize,
+  basicstyle=\YAMLkeystyle\footnotesize,                                 % assuming a key comes first
   numbers=left,
   numberstyle=\footnotesize,
   frame=single,
@@ -40,8 +40,8 @@
   sensitive=false,
   comment=[l]{\#},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\YAMLvaluestyle\ttfamily\small,
+  commentstyle=\color{purple}\ttfamily\footnotesize,
+  stringstyle=\YAMLvaluestyle\ttfamily\footnotesize,
   moredelim=[l][\color{orange}]{\&},
   moredelim=[l][\color{magenta}]{*},
   moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
@@ -96,22 +96,22 @@
   % Comments : /* comment */ and // comment
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   numbers=left,
   numberstyle=\footnotesize,
   frame=single,
   breaklines,
   columns=flexible,
-  keywordstyle=\color{blue}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  commentstyle=\color{green}\ttfamily,
+  keywordstyle=\color{blue}\ttfamily\footnotesize,
+  stringstyle=\color{red}\ttfamily\footnotesize,
+  commentstyle=\color{green}\ttfamily\footnotesize,
   tabsize=4,
   % Options
   sensitive=true
 }
 
 \lstdefinelanguage{JavaScript}{
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\footnotesize,
   numbers=left,
   numberstyle=\footnotesize,
   frame=single,
@@ -137,7 +137,7 @@
 \colorlet{numb}{magenta!60!black}
 
 \lstdefinelanguage{json}{
-    basicstyle=\ttfamily\small,
+    basicstyle=\ttfamily\footnotesize,
     numbers=left,
     numberstyle=\footnotesize,
     frame=single,
@@ -787,6 +787,9 @@ childResources:
 \end{lstlisting}
 
 而如果用client-go来编写，需要先创建通知器工厂，再用工厂创建通知器，最后添加事件处理器，对资源的增加、更新、删除做出反应，如代码段\ref{listing:watch-foo-deploy}所示。代码段\ref{listing:watch-foo-deploy}的第5到10行的意思是，对于Foo资源，它的增加、更新和删除触发的事件处理器的工作都是把相关Foo资源的键加入工作队列等待处理，这是对父资源处理的一般惯例。对于Deployment资源，它的增加、更新和删除触发的事件处理器都调用handleObject方法。handleObject的简化版是代码段\ref{listing:watch-foo-deploy}的第22到27行，意思是根据Deployment的OwnerReference信息得到它的父资源Foo的命名空间和名称以定位，将这个父资源的键加入工作队列。这是对子资源处理的一般惯例。代码段\ref{listing:watch-foo-deploy}是典型的模版代码，不同的控制器都遵循这样的惯例，只是资源类型不同而已。
+
+\newpage
+
 \begin{lstlisting}[language=Go,caption=sample-controller中监视Foo和Deployment的代码段,label=listing:watch-foo-deploy]
 kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
 exampleInformerFactory := informers.NewSharedInformerFactory(exampleClient, time.Second*30)
@@ -821,6 +824,7 @@ func (c *Controller) handleObject(obj interface{}) {
 \end{lstlisting}
 
 代码段\ref{listing:watch-foo-deploy-cr}借助controller-runtime库设置监视（watch）。借助controller-runtime提供的高级接口，相比代码段\ref{listing:watch-foo-deploy}要精简的多。但依然要比YAML文件片段\ref{listing:declarative-watch}复杂，还要考虑到Go语言和controller-runtime接口的学习成本，所以使用依旧比较困难。
+
 \begin{lstlisting}[language=Go,caption=controller-runtime版sample-controller中监视Foo和Deployment的代码段,label=listing:watch-foo-deploy-cr]
 c.Watch(&source.Kind{Type: &samplev1alpha1.Foo{}}, &handler.EnqueueRequestForObject{})
 subresources := []runtime.Object{
@@ -926,13 +930,14 @@ UnversalController自身依然是一个传统的Operator，用Go语言编写完�
 
 
 \section{自定义资源}
+YAML代码\ref{listing:1}是UC CRD的定义，通过kubectl向api-server提交这个yaml文件就可以在Kubernetes中注册一种新的资源类型``UniversalController''。这样就成功拓展了Kubernetes APIs，之后就可以使用这个新的API提交资源定义来注册控制器。
+
+YAML文件\ref{listing:catset-controller-config}是一个UC CRD资源的例子，定义了CatSet资源的控制器，它的行为几乎与Kubernetes原生资源的StatefulSet的控制器一致，是对StatefulSet的二次实现。
 \newpage
 \begin{lstlisting}[language=yaml,caption=UC CRD,label=listing:1]
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  annotations:
-    "api-approved.kubernetes.io": "unapproved, request not yet submitted"
   name: "universalcontrollers.universalcontroller.njuics.cn"
 spec:
   group: "universalcontroller.njuics.cn"
@@ -940,43 +945,38 @@ spec:
     kind: UniversalController
     listKind: UniversalControllerList
     plural: universalcontrollers
-    shortNames:
-    - uc
-    - uctl
     singular: universalcontroller
   scope: Cluster
 ...
 \end{lstlisting}
 
-YAML代码\ref{listing:1}是UC CRD的定义，通过kubectl向api-server提交这个yaml文件就可以在Kubernetes中注册一种新的资源类型``UniversalController''。这样就成功拓展了Kubernetes APIs，之后就可以使用这个新的API提交资源定义来注册控制器。
 
-\begin{lstlisting}[language=yaml,caption=作为UC CRD示例的catset-controlelr,label=listing:ucsample]
-apiVersion: universalcontroller.njuics.cn/v1alpha1
-kind: UniversalController
-metadata:
-  name: catset-controller
-spec:
-  parentResource:
-    apiVersion: mlhub.njuics.cn/v1alpha1
-    resource: catsets
-  childResources:
-    - apiVersion: v1
-      resource: pods
-      updateStrategy:
-        method: RollingRecreate
-        statusChecks:
-          conditions:
-            - type: Ready
-              status: "True"
-    - apiVersion: v1
-      resource: persistentvolumeclaims
-  hooks:
-    sync:
-      webhook:
-        url: "http://catset-ctrl.universalcontroller:8080"
-\end{lstlisting}
+%\begin{lstlisting}[language=yaml,caption=作为UC CRD示例的catset-controller,label=listing:ucsample]
+%apiVersion: universalcontroller.njuics.cn/v1alpha1
+%kind: UniversalController
+%metadata:
+%  name: catset-controller
+%spec:
+%  parentResource:
+%    apiVersion: mlhub.njuics.cn/v1alpha1
+%    resource: catsets
+%  childResources:
+%    - apiVersion: v1
+%      resource: pods
+%      updateStrategy:
+%        method: RollingRecreate
+%        statusChecks:
+%          conditions:
+%            - type: Ready
+%              status: "True"
+%    - apiVersion: v1
+%      resource: persistentvolumeclaims
+%  hooks:
+%    sync:
+%      webhook:
+%        url: "http://catset-ctrl.universalcontroller:8080"
+%\end{lstlisting}
 
-YAML文件\ref{listing:ucsample}是一个UC CRD资源的例子，定义了CatSet资源的控制器，它的行为几乎与Kubernetes原生资源的StatefulSet的控制器一致，是对StatefulSet的二次实现。
 
 一个UC CRD的``spec''有五个字段：parentResource、childResources、resyncPeriodSeconds、generateSelector和hooks。parentResource的类型是ResourceRule，用于指定父资源类型，也就是这个控制器实际管理的资源。ResourceRule只有两个字段``APIVersion''和``Resource''，用于确定一种资源类型。childResources是是一组ResourceRule，用于指定会被控制器生成的子资源类型。resyncPeriodSeconds被用于规定两次调谐之间间隔的时间，设置后就算工作队列当前是空的，但是距离上次调谐过去这么多时间后还是会去调谐。generateSelector是bool型的，如果为真，那么忽略父资源对象的标签选择器（如果存在的话），UniversalController会为其生成独一无二的标签选择器，避免与其他的资源冲突。这里的标签选择器都是为了筛选子资源，符合标签选择器的子资源都会被当做父资源的子资源。hooks是一组定义了控制器行为的lambda hook。
 
@@ -984,6 +984,9 @@ YAML文件\ref{listing:ucsample}是一个UC CRD资源的例子，定义了CatSet
 
 Kubernetes的官方Go语言客户端库client-go，提供了dynamic模块，可以用于创建动态客户端，借助于动态客户端，只要知道资源的apiVersion和Kind，就可以对任意一种资源进行操作。UniversalController基于此，实现了支持动态资源类型的informer和indexer，用于订阅特定资源相关事件以及查找特定类型的资源，是自定义控制器的核心组件。
 
+代码段\ref{listing:client}是客户端的结构体和一些方法，UC首先需要用New方法得到一个Clientset类型的对象，对于各种资源，只要知道资源的apiVersion和kind，都可以用这个对象的Resource方法得到一个ResourceClient对象，该对象可以对这类资源进行各类CURD的操作，所有的资源都以Unstructured类型存储，Unstructured中只有一个字典类型的字段，实际是把资源以接近JSON的形式存储起来。
+
+\newpage
 \begin{lstlisting}[language=Go,caption=客户端实现,label=listing:client]
 type Clientset struct {
 	config    rest.Config
@@ -997,7 +1000,6 @@ type ResourceClient struct {
 }
 func New(config *rest.Config, resources *dynamicdiscovery.ResourceMap) (*Clientset, error)
 func (cs *Clientset) Resource(apiVersion, resource string) (*ResourceClient, error) {
-	// Look up the requested resource in discovery.
 	apiResource := cs.resources.Get(apiVersion, resource)
 	if apiResource == nil {
 		return nil, fmt.Errorf("discovery: can't find resource %s in apiVersion %s", resource, apiVersion)
@@ -1015,15 +1017,12 @@ func (cs *Clientset) resource(apiResource *dynamicdiscovery.APIResource) *Resour
 func (rc *ResourceClient) AtomicUpdate(orig *unstructured.Unstructured, update func(obj *unstructured.Unstructured) bool) (result *unstructured.Unstructured, err error)
 
 type Unstructured struct {
-	// Object is a JSON compatible map with string, float, int, bool, []interface{}, or
-	// map[string]interface{}
-	// children.
 	Object map[string]interface{}
 }
 \end{lstlisting}
 
-代码段\ref{listing:client}是客户端的结构体和一些方法，UC首先需要用New方法得到一个Clientset类型的对象，对于各种资源，只要知道资源的apiVersion和kind，都可以用这个对象的Resource方法得到一个ResourceClient对象，该对象可以对这类资源进行各类CURD的操作，所有的资源都以Unstructured类型存储，Unstructured中只有一个字典类型的字段，实际是把资源以接近JSON的形式存储起来。
 
+\newpage
 \begin{lstlisting}[language=Go,caption=通知器（Informer）实现,label=listing:informer]
 // sharedResourceInformer is the actual, single informer that's shared by
 // multiple ResourceInformer instances.
@@ -1116,14 +1115,7 @@ func (u *Universalcontroller) syncUniversalController(uc *v1alpha1.
 
 \subsection{同步父资源（Parent Resource）}
 
-代码段\ref{listing:syncparent}展示了Parent Resource Controller对Parent Resource的同步过程：
-\begin{enumerate}
-	\item claimChildren方法会通过标签选择器找到所有的已经存在的子资源。
-	\item 如果Customize Hook非空，通过Customize Hook找到相关资源。
-	\item 将Parent Resource、Child Resources、Related Resources放入同步钩子请求体中，调用同步钩子，得到同步结果，其中包含期望的Parent Resource Status和期望的Child Resources，
-	\item 先比较已经存在的Child Resources和期望的Child Resources，如果一个资源已经存在，但是与期望不一致，就把它们两个当做JSON对象合并，之后根据更新策略更新得到合并结果；如果一个期望的资源还不存在，就创建它，其实就是执行了``Server-side apply''。
-	\item 最后更新Parent Resource Status。
-\end{enumerate}
+\newpage
 
 \begin{lstlisting}[language=Go,caption=同步父资源,label=listing:syncparent]
 func (pc *parentController) syncParentObject(parent *unstructured.Unstructured) error {
@@ -1160,6 +1152,14 @@ func (pc *parentController) syncParentObject(parent *unstructured.Unstructured) 
 }
 \end{lstlisting}
 
+代码段\ref{listing:syncparent}展示了Parent Resource Controller对Parent Resource的同步过程：
+\begin{enumerate}
+	\item claimChildren方法会通过标签选择器找到所有的已经存在的子资源。
+	\item 如果Customize Hook非空，通过Customize Hook找到相关资源。
+	\item 将Parent Resource、Child Resources、Related Resources放入同步钩子请求体中，调用同步钩子，得到同步结果，其中包含期望的Parent Resource Status和期望的Child Resources，
+	\item 先比较已经存在的Child Resources和期望的Child Resources，如果一个资源已经存在，但是与期望不一致，就把它们两个当做JSON对象合并，之后根据更新策略更新得到合并结果；如果一个期望的资源还不存在，就创建它，其实就是执行了``Server-side apply''。
+	\item 最后更新Parent Resource Status。
+\end{enumerate}
 
 \section{声明式的更新策略}
 \subsection{更新策略介绍}
@@ -1178,8 +1178,6 @@ UniversalController提供了很多更新策略，开发者可以通过声明式�
 ControllerRevision是UniversalController使用的一个内部API，用于实现声明式的滚动更新，主要受到Kubernetes原生资源StatefulSet和DaemonSet使用的ControllerRevision启发后实现。
 
 每个ControllerRevision都与一个资源相关，名称是该资源的类型、资源所在的apiGroup以及版本后缀组成的。版本后缀是对该资源指定字段的哈希结果。
-
-默认情况下，一旦一个特定的父资源被删除，属于该资源的ControllerRevision们会被垃圾回收处理掉。但是，也可以在父资源的删除过程中抛弃ControllerRevision，不再与这个父资源有关系的ControllerRevision也就不会被删除了，就可以创建另一个父资源来接管它。接管的规则基于父资源的标签选择器，和ReplicaSet接管Pods的方式一样。
 
 \begin{lstlisting}[language=yaml,caption=ControllerRevision示例,label=listing:controllerrevision]
 apiVersion: universalcontroller.njuics.cn/v1alpha1
@@ -1204,6 +1202,8 @@ children:
   - nginx-backend-2
 \end{lstlisting}
 
+默认情况下，一旦一个特定的父资源被删除，属于该资源的ControllerRevision们会被垃圾回收处理掉。但是，也可以在父资源的删除过程中抛弃ControllerRevision，不再与这个父资源有关系的ControllerRevision也就不会被删除了，就可以创建另一个父资源来接管它。接管的规则基于父资源的标签选择器，和ReplicaSet接管Pods的方式一样。
+
 YAML文件\ref{listing:controllerrevision}是ControllerRevision的一个例子，parentPatch字段存储了父资源的部分表示，它只包含UC CRD的revisionHistory字段列出的那些参与滚动更新的字段，默认是spec。
 
 例如，如果一个UC CRD的revisionHistory是数组[\"spec.template\"]，那么parentPath只会包含spec.template和嵌套在其中的子字段。
@@ -1216,7 +1216,7 @@ children字段存储了一个``属于''这个ControllerRevison的子资源列表
 
 children字段的值是按照apiGroup和kind进行分组的。对于每个apiGroup和kind的组合，存储了一个对象名称列表。
 \section{调谐器接口实现}
-在示例的YAML文件\ref{listing:ucsample}中hooks.sync就定义了当前控制器使用的调谐器。编写调谐器是在开发者基于UniversalController开发Operator时唯一需要的自定义代码编写工作。编写完成后需要以webhook的形式发布出来，借助serverless工具即可省去网络相关代码的编写。之后再UC CRD的相应字段填写服务地址就完成了控制器的配置。UC CRD中的Webhook结构如表\ref{table:webhook}所示。在webhook中，service的结构如表\ref{table:service-reference}所示。
+在示例的YAML文件\ref{listing:catset-controller-config}中hooks.sync就定义了当前控制器使用的调谐器。编写调谐器是在开发者基于UniversalController开发Operator时唯一需要的自定义代码编写工作。编写完成后需要以webhook的形式发布出来，借助serverless工具即可省去网络相关代码的编写。之后再UC CRD的相应字段填写服务地址就完成了控制器的配置。UC CRD中的Webhook结构如表\ref{table:webhook}所示。在webhook中，service的结构如表\ref{table:service-reference}所示。
 
 \begin{table}
   \centering
@@ -1366,16 +1366,10 @@ spec:
         url: "http://sample-controller.universalcontroller:8080"
 \end{lstlisting}
 
-YAML文件\ref{listing:sample-controller-config}是sample-controller的定义文件，7-9行指定了它需要处理的父资源类型，10-12行指定了子资源类型。18行是用户的调谐逻辑的入口。
-
 
 \begin{lstlisting}[language=JavaScript,caption=sample-controller的实现代码,label=listing:sample-controller]
 module.exports =  {
-  handler: (event, context) => {
-    let observed = event['data'];
-    return reconcile(observed.parent, observed.children);
-  }
-};
+  handler: (event, context) => { let observed = event['data']; return reconcile(observed.parent, observed.children);} };
 var reconcile = function (foo, children) {
     let desiredChildren = [];
     let currentStatus = {};
@@ -1413,6 +1407,8 @@ var desiredDeployment = function (foo) {
 };
 \end{lstlisting}
 
+YAML文件\ref{listing:sample-controller-config}是sample-controller的定义文件，7-9行指定了它需要处理的父资源类型，10-12行指定了子资源类型。18行是用户的调谐逻辑的入口。
+
 JavaScript代码\ref{listing:sample-controller}就是所有需要写的代码，而不是一个代码段。它的逻辑很简单，从请求体中取出Foo资源，根据它的定义生成期望的Deployment，Foo资源的status只有一个字段表示可用的副本数，如果Deployment还不存在，可用副本数为0，否则就是该Deployment的status.availableReplicas的值，最后将status和Deployment返回即可。
 
 接下来借助kubeless将这个函数部署成web服务，只需要一条命令：
@@ -1424,6 +1420,11 @@ kubeless -n universalcontroller function deploy sample-controller --runtime node
 tf-operator由kubeflow社区开发，项目地址为https://github.com/kubeflow/tf-operator，它提供了TFJob这个Kubernetes自定义资源，使其能够轻松地在Kubernetes上运行分布式或非分布式TensorFlow任务。
 \subsection{实现}
 
+YAML文件\ref{listing:tensorflow-controller-config}是tensorflowjob-controller的声明式定义。
+
+tf-operator依然用JavaScript实现，但实现逻辑相当复杂，总代码行数为408行，核心代码为代码段\ref{listing:tensorflowjob-controller}。原版tf-operator中的逻辑都转译了过来，包括根据不同的副本类型使用当前tfjob资源中相应的模版来创建Pod，为每一个Pod创建一个Service，分别统计每种副本的状态来更新tfjob的status等。
+
+\newpage
 \begin{lstlisting}[language=yaml,caption=tensorflowjob-controller的配置文件,label=listing:tensorflow-controller-config]
 apiVersion: universalcontroller.njuics.cn/v1alpha1
 kind: UniversalController
@@ -1448,7 +1449,6 @@ spec:
         url: "http://tensorflow-controller.universalcontroller:8080"
 \end{lstlisting}
 
-YAML文件\ref{listing:tensorflow-controller-config}是tensorflowjob-controller的声明式定义。
 
 \begin{lstlisting}[language=JavaScript,caption=tensorflowjob-controller的实现代码,label=listing:tensorflowjob-controller]
 let tfjob = observed.parent;
@@ -1493,7 +1493,7 @@ for (let rtype of Object.keys(replicas)) {
 }
 \end{lstlisting}
 
-tf-operator依然用JavaScript实现，但实现逻辑相当复杂，总代码行数为408行，核心代码为代码段\ref{listing:tensorflowjob-controller}。原版tf-operator中的逻辑都转译了过来，包括根据不同的副本类型使用当前tfjob资源中相应的模版来创建Pod，为每一个Pod创建一个Service，分别统计每种副本的状态来更新tfjob的status等。
+
 
 接下来借助kubeless将这个函数部署成web服务，部署命令为：
 
