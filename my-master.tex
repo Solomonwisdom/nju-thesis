@@ -16,6 +16,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
+\renewcommand{\lstlistingname}{代码}
 \newcommand\YAMLcolonstyle{\color{red}\mdseries}
 \newcommand\YAMLkeystyle{\color{black}\bfseries}
 \newcommand\YAMLvaluestyle{\color{blue}\mdseries}
@@ -30,18 +31,18 @@
 \expandafter{\language@yaml}
 {
   keywords={true,false,null,y,n},
-  keywordstyle=\color{darkgray}\bfseries\footnotesize,
-  basicstyle=\YAMLkeystyle\footnotesize,                                 % assuming a key comes first
+  keywordstyle=\color{darkgray}\bfseries\scriptsize,
+  basicstyle=\YAMLkeystyle\scriptsize,                                 % assuming a key comes first
   numbers=left,
-  numberstyle=\footnotesize,
+  numberstyle=\scriptsize,
   frame=single,
   breaklines,
   columns=flexible,
   sensitive=false,
   comment=[l]{\#},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily\footnotesize,
-  stringstyle=\YAMLvaluestyle\ttfamily\footnotesize,
+  commentstyle=\color{purple}\ttfamily\scriptsize,
+  stringstyle=\YAMLvaluestyle\ttfamily\scriptsize,
   moredelim=[l][\color{orange}]{\&},
   moredelim=[l][\color{magenta}]{*},
   moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
@@ -96,37 +97,37 @@
   % Comments : /* comment */ and // comment
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   numbers=left,
-  numberstyle=\footnotesize,
+  numberstyle=\scriptsize,
   frame=single,
   breaklines,
   columns=flexible,
-  keywordstyle=\color{blue}\ttfamily\footnotesize,
-  stringstyle=\color{red}\ttfamily\footnotesize,
-  commentstyle=\color{green}\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\ttfamily\scriptsize,
+  stringstyle=\color{red}\ttfamily\scriptsize,
+  commentstyle=\color{green}\ttfamily\scriptsize,
   tabsize=4,
   % Options
   sensitive=true
 }
 
 \lstdefinelanguage{JavaScript}{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   numbers=left,
-  numberstyle=\footnotesize,
+  numberstyle=\scriptsize,
   frame=single,
   breaklines,
   columns=flexible,
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
+  keywordstyle=\color{blue}\bfseries\scriptsize,
   ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
+  ndkeywordstyle=\color{darkgray}\bfseries\scriptsize,
+  identifierstyle=\color{black}\scriptsize,
   sensitive=false,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
+  commentstyle=\color{purple}\ttfamily\scriptsize,
+  stringstyle=\color{red}\ttfamily\scriptsize,
   morestring=[b]',
   morestring=[b]"
 }
@@ -137,9 +138,9 @@
 \colorlet{numb}{magenta!60!black}
 
 \lstdefinelanguage{json}{
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\scriptsize,
     numbers=left,
-    numberstyle=\footnotesize,
+    numberstyle=\scriptsize,
     frame=single,
   	breaklines,
   	columns=flexible,
@@ -194,15 +195,12 @@
 % 导师的单位名称及地址
 \supervisorinfo{南京大学计算机科学与技术系~~南京市栖霞区仙林大道163号~~210023}
 % 答辩委员会主席
-\chairman{~~教授}
+\chairman{黄宇~~教授}
 % 第一位评阅人
-\reviewera{~~教授}
+\reviewera{卜磊~~教授}
 % 第二位评阅人
-\reviewerb{~~副教授}
-% 第三位评阅人
-\reviewerc{~~教授}
-% 第四位评阅人
-\reviewerd{~~研究员}
+\reviewerb{陈林~~副教授}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 设置论文的中文封面
@@ -243,9 +241,9 @@
 % 论文作者所在学校或机构的名称。此属性可选，默认值为``南京大学''。
 \institute{南京大学}
 % 论文的提交日期，需设置年、月、日。
-\submitdate{2021年4月15日}
+\submitdate{2021年5月25日}
 % 论文的答辩日期，需设置年、月、日。
-\defenddate{2021年6月1日}
+\defenddate{2021年5月25日}
 % 论文的定稿日期，需设置年、月、日。此属性可选，默认值为最后一次编译时的日期，精确到日。
 %% \date{2013年5月1日}
 % 论文的定稿日期，需设置年、月、日。此属性可选，默认值为最后一次编译时的日期，精确到日。
@@ -270,7 +268,7 @@
 % 格式，即``Month day, year''，其中``Month''为月份的英文名全称，首字母大写；``day''为
 % 该月中日期的阿拉伯数字表示；``year''为年份的四位阿拉伯数字表示。此属性可选，默认值为最后
 % 一次编译时的日期。
-\englishdate{Apr 15, 2021}
+\englishdate{May 25, 2021}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 设置论文的中文摘要
@@ -315,8 +313,8 @@
 Kubernetes是最受欢迎的容器编排系统，它可以实现应用的自动化部署，已经成为分布式资源调度和自动化运维的事实标准。为了适应成千上万的应用的工作模式，Kubernetes Operators被官方推荐作为在Kubernetes中打包、部署和管理应用的方法，它是用户扩展Kubernetes的声明式API的最主流的方式。本文工作针对Kubernetes Operator开发中存在的学习曲线陡峭、非功能性代码繁多、模版代码冗余等问题，研究了Operator的工作原理，提出了一种声明式的通用Kubernetes Operator，将其命名为UniversalController，简称UC，从而更简单地开发和部署自定义控制器。具体而言，本文工作的主要内容包括：
 \begin{enumerate}
 	\item 针对Operator开发困难的问题，提出一种声明式的通用调谐技术，简化需要编写的代码，大量减少Operator开发者的工作量，免除学习Kubernetes客户端库、Kubernetes API机制库或其他工具的负担，也不用去编写或生成模版代码，而是将精力集中在业务逻辑上，即描述期望状态上。
-	\item 实现了声明式的通用Kubernetes Operator，UC。该工具具有声明式的资源监视（watch），声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
-	\item 基于UC重新实现了一些现有的Operator，证明了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
+	\item 实现了声明式的通用Kubernetes Operator，UC。该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
+	\item 基于UC重新实现了一些现有的Kubernetes Operators，证明了UC可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
 % 中文关键词。关键词之间用中文全角分号隔开，末尾无标点符号。
@@ -332,7 +330,7 @@ Kubernetes is the most popular container orchestration system for automating app
 \begin{enumerate}
 	\item To address the problem of difficult Operator development, a declarative universal reconciliation technique is proposed to simplify the code that needs to be written, to massively reduce the workload of Operator developers, to eliminate the burden of learning the Kubernetes client library, the Kubernetes API mechanism library or other tools, and to not have to write or generate template code, but to focus on business logic, i.e., describing the desired state.
 	\item Implements a declarative universal Kubernetes Operator, named as UniversalController, with declarative resource watch, declarative reconciliation, declarative update policies, and language-agnostic features. Instead of writing any code to interact with Kubernetes, users only need to describe the resources to be listened to, the update policies to be used in a YAML file and the desired state in the reconciliation snippet.
-	\item Based on UniversalController, some existing Operators were re-implemented, proving that UniversalController can greatly reduce development effort and is suitable for most scenarios. Performance testing also verified that it can reduce memory consumption and kube-apiserver load in environments with multiple custom controller deployments.
+	\item Based on UniversalController, some existing Kubernetes Operators were re-implemented, proving that UniversalController can greatly reduce development effort and is suitable for most scenarios. Performance testing also verified that it can reduce memory consumption and kube-apiserver load in environments with multiple custom controller deployments.
 \end{enumerate}
 
 \englishkeywords{Kubernetes；Operator；Declarative；UniversalController}
@@ -368,31 +366,29 @@ Kubernetes已经开始被广泛应用于基础设施自动化和状态调谐的�
 Kubernetes具有很好的开放性与可拓展性，开发人员可以通过Operator来拓展Kubernetes的声明式API，这也是最常用的方式。Operator的概念是由coreOS提出的，是对Kubernetes的软件拓展，帮助实现应用程序的自动化部署、升级、管理以及运维\cite{operators}。然而，编写一个Operator并不容易，具有相当高的门槛，并且需要付出大量的精力和时间。Operator开发人员需要具备一定程度的Kubernetes和分布式系统知识，需要写大量的模版代码或者使用代码生成工具。编写出的Operator帮助我们实现了应用程序的自动化运维，但是维护这个Operator却还是要给开发人员带来很大的负担\cite{problemofoperators}。因此诞生了很多工具，它们都希望帮助开发人员更简单的实现自己的Operator。本文提出的UniversalController是一个声明式的通用Operator，可以有效减轻开发人员的开发与运维负担。
 
 \section{研究现状}
+% 应该是第二章的浓缩版
+在开发Operator时，最常用且灵活的做法是使用现有的Kubernetes客户端，可以是Go、Java、JavaScript/TypeScript或其他语言的客户端。这些客户端提供了对Kubernetes API的直接底层访问，没有任何包装或附加层。其中最成熟且功能齐全的是Go客户端client-go\footnote{https://github.com/kubernetes/client-go}，它提供了很多基础组件用于自动以控制器的开发。但是client-go不是一个专门用于实现控制器的库，而是为了更通用的场景而设计的，用它来实现Operator还是需要接触到太多的底层接口，十分繁琐。
 
-在开发Operator时，最常用且灵活的做法是使用现有的Kubernetes客户端，可以是Go、Java、JS/Typescript或其他语言的客户端。这些客户端提供了对Kubernetes API的直接底层访问，没有任何包装或附加层。其中最成熟且功能齐全的是Go客户端client-go\footnote{https://github.com/kubernetes/client-go}，它提供了很多基础组件用于自动以控制器的开发。但是client-go不是一个专门用于实现控制器的库，而是为了更通用的场景而设计的，用它来实现Operator还是需要接触到太多的底层接口，十分繁琐。而如果用Go以外的编程语言，体验更是会大幅下滑，它们没有client-go成熟，甚至缺少很多特性。
+为了简化Kubernetes Operator的开发，目前的方法主要是使用SDK工具，它使用代码生成工具来生成模版代码，帮助用户搭建项目基础脚手架。Kubernetes-sigs\footnote{https://github.com/kubernetes-sigs}团队开源的kubebuilder和coreOS开源的Operator SDK都是基于这个思路而产生的。与Ruby on Rails和SpringBoot等Web开发框架类似，Kubebuilder和Operator SDK提高了开发人员使用Go语言快速构建和发布Kubernetes API的速度并降低了管理的复杂性。它们都使用了高级抽象库controller-runtime\footnote{https://github.com/kubernetes-sigs/controller-runtime}，建立在用于构建核心Kubernetes API的规范技术之上，以提供简单的抽象，减少模板和编码量。它们减轻了工作量，给出了脚手架，定义了一套自己的编程规范，不按照规范走就无法使用代码生成工具。但是它们的版本兼容性存在问题，新版本的编程规范会与就版本冲突，导致升级后无法使用，必须手动修改相关代码实现迁移。
 
-为了简化Kubernetes Operator的开发，目前的方法主要是使用SDK工具，它使用代码生成工具来生成模版代码，帮助用户搭建项目基础脚手架。
-
-Kubernetes-sigs\footnote{https://github.com/kubernetes-sigs}团队开源的kubebuilder和coreOS开源的Operator SDK都是基于这个思路而产生的。与Ruby on Rails和SpringBoot等Web开发框架类似，Kubebuilder和Operator SDK提高了开发人员使用Go语言快速构建和发布Kubernetes API的速度并降低了管理的复杂性。它们都使用了高级抽象库controller-runtime\footnote{https://github.com/kubernetes-sigs/controller-runtime}，建立在用于构建核心Kubernetes API的规范技术之上，以提供简单的抽象，减少模板和编码量。它们减轻了工作量，给出了脚手架，定义了一套自己的编程规范，不按照规范走就无法使用代码生成工具。但是它们的版本兼容性存在问题，新版本的编程规范会与就版本冲突，导致升级后无法使用，必须手动修改相关代码实现迁移。而且它们生成的代码依然是用Go编写的，整个项目依然是一个Go项目，用户依然需要具备Go语言和Kubernetes相关依赖库的基础知识\cite{problemofoperators}。
-
-对于其他编程语言的使用者，Operaoter的开发体验很不友好，没有类似controller-runtime的高级抽象包，甚至官方提供的客户端都还不够成熟。
+对于其他编程语言的使用者，Kubernetes Operator的开发体验很不友好，没有类似controller-runtime的高级抽象包，甚至官方提供的客户端都还不够成熟。使用SDK工具生成的代码依然是用Go编写的，整个项目依然是一个Go项目，用户依然需要具备Go语言和Kubernetes相关依赖库的基础知识\cite{problemofoperators}。
 
 \section{本文工作}
-本文针对现有Operator开发方式中存在的各种问题，提出了一种声明式的通用Kubernetes Operator，为用户开发Operator提供一种简单的新方式，让用户摆脱Go语言、Kubernetes开发工具包、代码生成工具的学习与使用成本，用声明式的方式开发Operator。自定义资源和自定义控制器都借助Kubernetes的声明式api创建，用户可以将注意力完全集中在核心调谐逻辑上，并且可以使用任意自己喜欢或熟悉的语言来实现一个标准优质的Operator。本文将该工具称为UniversalController，它自身也是一个Operator，底层实现是经典的控制器模式，但是把业务逻辑部分抽取出来托管给用户编写的核心调谐逻辑代码（hooks）。
+本文针对现有Operator开发方式中存在的各种问题，提出了一种声明式的通用Kubernetes Operator，为用户开发Operator提供一种简单的新方式，让用户摆脱Go语言、Kubernetes开发工具包、代码生成工具的学习与使用成本，用声明式的方式开发Operator。自定义资源和自定义控制器都借助Kubernetes的声明式api创建，用户可以将注意力完全集中在核心调谐逻辑上，并且可以使用任意自己喜欢或熟悉的语言来实现一个标准优质的Operator。本文将该工具称为UniversalController，它自身也是一个Operator，底层实现是经典的控制器模式，但是把业务逻辑部分抽取出来托管给用户编写的核心调谐逻辑代码。
 
 借助UniversalController提供的声明式API，尤其是声明式调谐接口，用户在写核心业务逻辑时也可以获得平时使用YAML编写配置文件并使用``kubectl apply''命令部署相近的体验，只是需要改用JSON\footnote{https://www.json.org/json-en.html}编写一些配置文件，并且可以使用任意自己熟悉或者喜欢的编程语言来实现。如果用户已经很熟悉用``kubectl apply''命令去使用Kubernetes的声明式API来管理应用，那么就可以很容易地基于UniversalController实现一个Operator为应用的部署、更新、维护提供自动化流程而不必去学习Go语言或者如何使用Kubernetes客户端库，也不需要去学习使用代码生成工具。本文工作主要包括：
 
 \begin{enumerate}
 	\item 针对Operator开发困难的问题，提出一种声明式的通用调谐技术，简化需要编写的代码，大量减少Operator开发者的工作量，免除学习Kubernetes客户端库、Kubernetes API机制库或其他工具的负担，也不用去编写或生成模版代码，而是将精力集中在业务逻辑上，即描述期望状态上。
-	\item 实现了声明式的通用Kubernetes Operator，UniverslController。该工具具有声明式的资源监视（watch），声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
-	\item 基于UniversalController重新实现了一些现有的Operator，证明了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
+	\item 实现了声明式的通用Kubernetes Operator，UniverslController。该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
+	\item 基于UniversalController重新实现了一些现有的Operators，证明了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
 
 \section{论文结构}
-本文共六章，组织结构如下：
+本文接下来的内容组织结构如下：
 
-第\ref{chapter_introduction}章 绪论。本章对Kubernetes的流行程度，Kubernetes Operator在其中扮演的角色和意义、现阶段开发Operator存在的问题以及本文针对这些问题所做的工作做了简单的介绍。
+%第\ref{chapter_introduction}章 绪论。本章对Kubernetes的流行程度，Kubernetes Operator在其中扮演的角色和意义、现阶段开发Operator存在的问题以及本文针对这些问题所做的工作做了简单的介绍。
 
 第\ref{chapter_relative}章 相关工作和技术。本章主要介绍Kubernetes Operator所涉及到的关键技术与工作。首先介绍了现代基础设施的特征和面临的挑战，之后深入到一个具体的、流行的做法，基础设施即代码，然后给出状态调谐的定义和细节，最后深入探讨了Kubernetes系统和它如何应用和实现状态调谐的细节。
 
@@ -517,7 +513,7 @@ IaC工具和系统通常使用两种主要的编程范式：指令式和声明�
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.6\textwidth]{pics/simple-state-reconciliation.png}\\
+  \includegraphics[width=0.6\textwidth]{pics/simple-state-reconciliation.pdf}\\
   \caption{状态调谐}\label{fig:ssr}
 \end{figure}
 
@@ -636,7 +632,7 @@ CRD的规范还需要为新资源指定至少一个版本。版本指定了新�
 
 \paragraph{Names}
 
-要声明一个新的Kubernetes API资源，需要指定其名称的几种形式。复数名称（YAML文件\ref{listing:1}第12行的universalcontrollers）将被用于Kubernetes API端点的资源的URL结构中，即/apis/universalcontroller.njuics.cn/v1alpha1/universalcontrollers。单数名称（第10行）通常用于kubectl CLI命令，例如，kubectl get universalcontroller。也可以为其定义更短的别名，如YAML文件\ref{listing:1}的第13-15行所示。最后，必须指定的最后一个名称是kind，它是资源类型的名称，在配置清单中使用。
+要声明一个新的Kubernetes API资源，需要指定其名称的几种形式。复数名称（YAML文件\ref{listing:1}第12行的universalcontrollers）将被用于Kubernetes API端点的资源的URL结构中，即/apis/universalcontroller.njuics.cn/v1alpha1/universa-lcontrollers。单数名称（第10行）通常用于kubectl CLI命令，例如，kubectl get universalcontroller。也可以为其定义更短的别名，如YAML文件\ref{listing:1}的第13-15行所示。最后，必须指定的最后一个名称是kind，它是资源类型的名称，在配置清单中使用。
 
 \paragraph{Scope}
 
@@ -659,11 +655,6 @@ Kubernetes官方文档将Operators描述为``Kubernetes的软件扩展，利用�
 \paragraph{client-go}
 
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width= 1\textwidth]{pics/client-go-controller-interaction.pdf}\\
-  \caption{控制器工作方式}\label{fig:client-go-controller-interaction}
-\end{figure}
 
 client-go是最成熟的Kubernetes客户端库，它和Kubernetes自身一样都由Go语言编写而成，是Kubernetes官方第一个提供的客户端库，而且正在被Kubernetes本身的组件内部使用，这也意味着它是经过良好测试和可靠的\cite{controllerclientgo}。
 
@@ -681,19 +672,6 @@ client-go是最成熟的Kubernetes客户端库，它和Kubernetes自身一样都
 
 Informer是对Kubernetes API的实时观察功能的抽象，API可以将集群中任何对象的任何变化事件通知消费者。它们提供了一个接口，允许开发者为特定的Kubernetes资源类型有效地建立所述的变化流连接\cite{informer}。这代表了实现自定义控制器的关键功能，它需要不断监视和应对资源相关变化的。
 
-图\ref{fig:client-go-controller-interaction}展示了使用clieng-go编写的控制器的工作方式。首先介绍一下client-go提供给开发者的组件：
-\begin{enumerate}
-	\item \textbf{反射器（Reflector）}：反射器监视着Kubernetes API中的指定资源类型（Kind）。完成这项工作的方法（function）是``ListAndWatch''。监视的对象可以是内置的原生资源，也可以是自定义资源。当反射器通过监视API收到有新资源诞生的通知时，它使用相应的listing API获得该对象，调用``watchHandler''方法，将其放入``Delta FIFO''队列中。
-	\item \textbf{通知器（Informer）}：通知器从``Delta FIFO''队列中弹出对象。它的工作是保存对象以便以后检索，并向自定义控制器传递对象。
-	\item \textbf{索引器（Indexer）}：索引器提供索引对象的功能。一个典型的索引用例是基于对象标签创建索引。索引器可以基于几个索引功能来维护索引。索引器使用一个线程安全的数据存储来存储对象和它们的键。默认会使用Store类型中一个名为MetaNamespaceKeyFunc的方法来生成键，该方法将一个对象的键生成为该对象的<命名空间>/<名称>组合。
-\end{enumerate}
-
-而自定义控制器中有以下组件：
-\begin{enumerate}
-	\item \textbf{资源事件处理器（Resource Event Handlers）}：资源事件处理器是回调函数，当通知器（Informer）向控制器传递一个对象时，它将被调用。编写这些函数的典型模式是获取被传递对象的键，并将该键排入工作队列（workqueue）等待进一步的处理。
-	\item \textbf{工作队列（Workqueue）}：工作队列将对象的传递与处理脱钩，接受到对象后不会立即处理而是放入队列中。
-	\item \textbf{处理程序（Process Item）}：处理程序被用于处理工作队列中的项目，它通常使用索引器来检索与键对应的对象。
-\end{enumerate}
 
 \paragraph{controller-runtime}
 
@@ -724,14 +702,33 @@ Kubernetes的Operator可以简单解释为自定义资源与自定义控制器�
 
 \subsubsection{client-go}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=1\textwidth]{pics/client-go-controller-interaction.pdf}\\
+  \caption{控制器工作方式}\label{fig:client-go-controller-interaction}
+\end{figure}
+
+client-go是最常用也最成熟的客户端库，图\ref{fig:client-go-controller-interaction}展示了使用clieng-go编写的控制器的工作方式。首先介绍一下client-go提供给开发者的组件：
+\begin{enumerate}
+	\item \textbf{反射器（Reflector）}：反射器监视着Kubernetes API中的指定资源类型（Kind）。完成这项工作的方法（function）是``ListAndWatch''。监视的对象可以是内置的原生资源，也可以是自定义资源。当反射器通过监视API收到有新资源诞生的通知时，它使用相应的listing API获得该对象，调用``watchHandler''方法，将其放入``Delta FIFO''队列中。
+	\item \textbf{通知器（Informer）}：通知器从``Delta FIFO''队列中弹出对象。它的工作是保存对象以便以后检索，并向自定义控制器传递对象。
+	\item \textbf{索引器（Indexer）}：索引器提供索引对象的功能。一个典型的索引用例是基于对象标签创建索引。索引器可以基于几个索引功能来维护索引。索引器使用一个线程安全的数据存储来存储对象和它们的键。默认会使用Store类型中一个名为MetaNamespaceKeyFunc的方法来生成键，该方法将一个对象的键生成为该对象的<命名空间>/<名称>组合。
+\end{enumerate}
+
+而自定义控制器中有以下组件：
+\begin{enumerate}
+	\item \textbf{资源事件处理器（Resource Event Handlers）}：资源事件处理器是回调函数，当通知器（Informer）向控制器传递一个对象时，它将被调用。编写这些函数的典型模式是获取被传递对象的键，并将该键排入工作队列（workqueue）等待进一步的处理。
+	\item \textbf{工作队列（Workqueue）}：工作队列将对象的传递与处理脱钩，接受到对象后不会立即处理而是放入队列中。
+	\item \textbf{处理程序（Process Item）}：处理程序被用于处理工作队列中的项目，它通常使用索引器来检索与键对应的对象。
+\end{enumerate}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width= 1\textwidth]{pics/coding-operator.pdf}\\
+  \includegraphics[width=0.9\textwidth]{pics/coding-operator.pdf}\\
   \caption{Operator编写流程}\label{fig:coding-operator}
 \end{figure}
 
-client-go是最常用也最成熟的客户端库，图\ref{fig:client-go-controller-interaction}描述了控制器的工作方式，图\ref{fig:coding-operator}是使用client-go开发一个自定义控制器的基本流程，除了最后用于部署控制器的两步以外，各个流程都与图\ref{fig:client-go-controller-interaction}中的一个组件或者一个步骤对应。client-go相关代码以模版代码居多，在不同的控制器中，创建客户端、通知器、工作队列的代码都是高度相像的，只是需要处理的资源类型不同。每个控制器真正核心的部分都是``定义期望的状态（子资源们）''，即给出期望状态（state）。
+图\ref{fig:coding-operator}是使用client-go开发一个自定义控制器的基本流程，除了最后用于部署控制器的两步以外，各个流程都与图\ref{fig:client-go-controller-interaction}中的一个组件或者一个步骤对应。client-go相关代码以模版代码居多，在不同的控制器中，创建客户端、通知器、工作队列的代码都是高度相像的，只是需要处理的资源类型不同。每个控制器真正核心的部分都是``定义期望的状态（子资源们）''，即给出期望状态（state）。
 
 \subsection{Kubernetes Controller Runtime}
 
@@ -769,7 +766,7 @@ UC CRD是UniversalController提供的声明式API，通过Kubernetes CustomResou
 UC CRD是对控制器的高级抽象，包含了一个控制器运行时需要知道的各项信息，例如事件配置、更新策略和调谐接口访问地址。用户只需要填写好各项字段就能声明式地创建想要的控制器。通过UC CRD实现了以下功能：
 
 \begin{enumerate}
-	\item \textbf{声明式的监视（watch）}：用户只需要填写好parentResource对象和childResources对象数组，UniversalController就会对这些资源进行监视，订阅它们的相关事件。
+	\item \textbf{声明式的监视}：用户只需要填写好parentResource对象和childResources对象数组，UniversalController就会对这些资源进行监视，订阅它们的相关事件。
 	\item \textbf{声明式的更新策略}：childResources对象数组中的每个childResource对象都有一个updateStrategy对象，通过设置它实现声明式的更新策略，支持OnDelete, Recreate, InPlace, RollingRecreate, RollingInPlace。
 	\item \textbf{声明式的调谐}：调谐接口是唯一需要用户编码实现的模块，用户在这里只需要关心实际业务逻辑，开发完成后将其部署成一个web服务，将服务地址填入UC CRD的相应字段即可。用户在编码过程中只需要描述期望的状态即可，而不需要给出具体操作以达到期望状态，这个过程本质上也是声明式的。
 \end{enumerate}
@@ -787,8 +784,6 @@ childResources:
 \end{lstlisting}
 
 而如果用client-go来编写，需要先创建通知器工厂，再用工厂创建通知器，最后添加事件处理器，对资源的增加、更新、删除做出反应，如代码段\ref{listing:watch-foo-deploy}所示。代码段\ref{listing:watch-foo-deploy}的第5到10行的意思是，对于Foo资源，它的增加、更新和删除触发的事件处理器的工作都是把相关Foo资源的键加入工作队列等待处理，这是对父资源处理的一般惯例。对于Deployment资源，它的增加、更新和删除触发的事件处理器都调用handleObject方法。handleObject的简化版是代码段\ref{listing:watch-foo-deploy}的第22到27行，意思是根据Deployment的OwnerReference信息得到它的父资源Foo的命名空间和名称以定位，将这个父资源的键加入工作队列。这是对子资源处理的一般惯例。代码段\ref{listing:watch-foo-deploy}是典型的模版代码，不同的控制器都遵循这样的惯例，只是资源类型不同而已。
-
-\newpage
 
 \begin{lstlisting}[language=Go,caption=sample-controller中监视Foo和Deployment的代码段,label=listing:watch-foo-deploy]
 kubeInformerFactory := kubeinformers.NewSharedInformerFactory(kubeClient, time.Second*30)
@@ -823,20 +818,7 @@ func (c *Controller) handleObject(obj interface{}) {
 }
 \end{lstlisting}
 
-代码段\ref{listing:watch-foo-deploy-cr}借助controller-runtime库设置监视（watch）。借助controller-runtime提供的高级接口，相比代码段\ref{listing:watch-foo-deploy}要精简的多。但依然要比YAML文件片段\ref{listing:declarative-watch}复杂，还要考虑到Go语言和controller-runtime接口的学习成本，所以使用依旧比较困难。
-
-\begin{lstlisting}[language=Go,caption=controller-runtime版sample-controller中监视Foo和Deployment的代码段,label=listing:watch-foo-deploy-cr]
-c.Watch(&source.Kind{Type: &samplev1alpha1.Foo{}}, &handler.EnqueueRequestForObject{})
-subresources := []runtime.Object{
-    &appsv1.Deployment{},
-}
-for _, subresource := range subresources {
-    c.Watch(&source.Kind{Type: subresource}, &handler.EnqueueRequestForOwner{
-        IsController: true,
-        OwnerType:    &samplev1alpha1.Foo{},
-    })
-}
-\end{lstlisting}
+代码段\ref{listing:watch-foo-deploy-cr}借助controller-runtime库设置监视。借助controller-runtime提供的高级接口，相比代码段\ref{listing:watch-foo-deploy}要精简的多。但依然要比YAML文件片段\ref{listing:declarative-watch}复杂，还要考虑到Go语言和controller-runtime接口的学习成本，所以使用依旧比较困难。
 
 
 \subsection{声明式的通用调谐器}
@@ -854,6 +836,19 @@ for _, subresource := range subresources {
   \caption{调谐器}\label{fig:reconciler}
 \end{figure}
 
+\begin{lstlisting}[language=Go,caption=controller-runtime版sample-controller中监视Foo和Deployment的代码段,label=listing:watch-foo-deploy-cr]
+c.Watch(&source.Kind{Type: &samplev1alpha1.Foo{}}, &handler.EnqueueRequestForObject{})
+subresources := []runtime.Object{
+    &appsv1.Deployment{},
+}
+for _, subresource := range subresources {
+    c.Watch(&source.Kind{Type: subresource}, &handler.EnqueueRequestForOwner{
+        IsController: true,
+        OwnerType:    &samplev1alpha1.Foo{},
+    })
+}
+\end{lstlisting}
+
 图\ref{fig:reconciler}是一般的调谐器抽象，它接受调谐请求和当前系统上下文，并返回调谐的结果。在Kubernetes中Domain APIs就是各种资源，包括Pod、Service、ReplicaSet等，用户自定义的资源也包含在其中。在UC中，调谐请求就是当前被处理的资源对象，上下文就是通过标签筛选出的子资源以及相关资源，调谐结果是根据当前状态（state）得到该资源对象的状态（status）以及根据该资源对象的规格（specification）得到的期望子资源。
 
 \begin{figure}[htbp]
@@ -864,9 +859,7 @@ for _, subresource := range subresources {
 
 举例来说，\ref{section:sample-controller}节的sample-controller负责管理的自定义资源是Foo，它的spec中只有两个字段deploymentName和replicas，代表期望生成的Deployment资源的名称和指定的副本数量，它的status中只有一个字段availableReplicas，代表集群中实际可用的副本数量。图\ref{fig:Foo-reconciliation}展示了sample-controller的一次调谐过程。根据这个Foo的deploymentName和replicas会去生成一个名称为example-foo，副本数量为1的Deployment，这就是第二个翻译过程，对应代码\ref{listing:sample-controller}的第17到41行的desiredDeployment函数。而根据当前集群中实际的Deployment的status中的availableReplicas字段可以得知可用的副本数量此刻为0，所以Foo的status的availableReplicas字段的值也要设置为0，这就是第一个翻译过程，对应代码\ref{listing:sample-controller}的第10到13行。
 
-基于UniversalController编写的调谐器不用去处理资源的增删改查，不用去与Kubernetes交互，只需要去返回期望状态（期望存在的资源集合）。UC Controller会去决定怎么到达期望状态。这个过程与用户直接通过kubectl将资源描述文件提交给kube-apiserver很接近，指令式的操作极少，也是声明式的。
-
-UniversalController使用自己的服务端应用（server-side apply）逻辑，它与``kubectl apply''的逻辑接近，遵循惯例而不是配置。开发者不需要在CRD中提供如何合并旧资源与新资源的提示，自定义资源和原生资源都根据一套``kubectl apply''逻辑得到合并结果。
+基于UniversalController编写的调谐器不用去处理资源的增删改查，不用去与Kubernetes交互，只需要去返回期望状态（期望存在的资源集合）。UC Controller会去决定怎么到达期望状态。这个过程与用户直接通过kubectl将资源描述文件提交给kube-apiserver很接近，指令式的操作极少，也是声明式的。UniversalController使用自己的服务端应用（server-side apply）逻辑，它与``kubectl apply''的逻辑接近，遵循惯例而不是配置。开发者不需要在CRD中提供如何合并旧资源与新资源的提示，自定义资源和原生资源都根据一套``kubectl apply''逻辑得到合并结果。
 
 现阶段调谐器需要以Webhook的形式提供，任何可以编写网络服务并处理JSON的编程语言都可以用于编写这段核心业务逻辑。这是实现语言无关特性的关键。借助serverless工具，开发者实际需要编写的只是一个函数而已，其lambda表达式为(parent, children, related) => \{... return (status, children)\}。例如，\ref{section:sample-controller}节的代码段\ref{listing:sample-controller}中的reconcile就是这样一个函数，最后只要返回调谐结果即可，不需要做任何增删改查之类的指令式操作。而使用client-go或者controller-runtime实现调谐逻辑时，都需要开发者调用接口对资源进行增删改查。代码段\ref{listing:crud-rc}是用client-go编写时增删改查资源相关的代码。第1行获取本次调谐处理的Foo资源对象；第2行获取已经存在的子资源Deployment；第3到5行表示如果子资源还不存在，就创建它；第6到8行表示如果已存在的Deployment的replicas与Foo中的不一致，就更新它；第9行更新Foo的status。
 \begin{lstlisting}[language=Go,caption=sample-controller中对资源进行增删改查的代码段,label=listing:crud-rc]
@@ -881,14 +874,14 @@ if foo.Spec.Replicas != nil && *foo.Spec.Replicas != *deployment.Spec.Replicas {
 _, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).Update(context.TODO(), fooCopy, metav1.UpdateOptions{})
 \end{lstlisting}
 
-\subsection{服务端应用（apply）}
+%\subsection{服务端应用（apply）}
 
 
 \subsection{声明式的更新策略}
 
 一般的Operator在比较期望状态和实际状态后，会对资源进行更新，进行增删改查的操作。而不同的资源适合不同的更新策略，例如Pod一般会用重新创建，因为当一个Pod已经在Kubernetes中存在，它能修改的只有metadata中的标签（labels）和附加说明（annotations），spec中的字段都不能修改，如果需要修改，就只能删除重建。而Deployment除了名字和命名空间都可以修改，直接更新原资源即可。
 
-在借助UC实现的自定义控制器中，UC Controller会代为执行更新相关操作，为了更灵活的进行更新，具体资源具体分析，内置了很多更新策略，通过声明式接口供用户使用。Kubernetes的原生资源Deployment和StatefulSet都有对它们管理的Pod进行滚动更新的功能。UniversalController也支持滚动更新，内置了相关的更新策略，并且可以通过声明式使用，开发者只需要在UC资源中填入相应字段就可以让自己的控制器拥有滚动更新的能力。例如，\ref{section:catset}节中的CatSet用例是在基于UC重写的StatefulSet，为其添加对滚动更新的支持，只需要YAML文件\ref{listing:catset-controller-config}中的第16到21行，也就是YAML片段\ref{listing:declarative-rolling}中的第4到9行，表示对Pod更新采取滚动重写创建的策略。当Pods需要被更新时，每次按照指定的粒度重新创建一批，这一批的Pods的status中condition字段都包含片段\ref{listing:ready}时，也就是都就绪时，才会去更新下一批。而为了让StatefulSet支持滚动更新，Kubernetes开发者改动了业务逻辑、模版文件、生成的代码，总共涉及到了超过9000行的改动\cite{statefulsetupdate}。
+在借助UC实现的自定义控制器中，UC Controller会代为执行更新相关操作，为了更灵活的进行更新，具体资源具体分析，内置了很多更新策略，通过声明式接口供用户使用。Kubernetes的原生资源Deployment和StatefulSet都有对它们管理的Pod进行滚动更新的功能。UniversalController也支持滚动更新，内置了相关的更新策略，并且可以通过声明式使用，开发者只需要在UC资源中填入相应字段就可以让自己的控制器拥有滚动更新的能力。例如，\ref{section:catset}节中的CatSet用例是在基于UC重写的StatefulSet，为其添加对滚动更新的支持，只需要YAML文件\ref{listing:catset-controller-config}中的第16到21行，也就是YAML片段\ref{listing:declarative-rolling}中的第4到9行，表示对Pod更新采取滚动重写创建的策略。当Pods需要被更新时，每次按照指定的粒度重新创建一批，这一批的Pods的status中condition字段都包含片段\ref{listing:declarative-rolling}的第8到9行时，也就是都就绪时，才会去更新下一批。而为了让StatefulSet支持滚动更新，Kubernetes开发者改动了业务逻辑、模版文件、生成的代码，总共涉及到了超过9000行的改动\cite{statefulsetupdate}。
 
 为StatefulSet添加滚动更新支持为Kubernetes引入了ControllerRevision的概念，用于对资源进行版本控制，保存滚动更新的中间信息，确保滚动更新被中断或者遭遇故障（例如控制器被删除重建）后可以恢复。UC也使用ControllerRevision对资源进行版本控制，以支持滚动更新，但存储的中间信息结构与StatefulSet有些差异，具体的会在\ref{section:rolling-control}节介绍。
 \begin{lstlisting}[language=yaml,caption=添加滚动更新,label=listing:declarative-rolling]
@@ -901,13 +894,6 @@ _, err := c.sampleclientset.SamplecontrollerV1alpha1().Foos(foo.Namespace).Updat
 +        conditions:
 +        - type: Ready
 +          status: "True"
-\end{lstlisting}
-
-\begin{lstlisting}[language=YAML,caption=状态Ready为True,label=listing:ready]
-  - lastProbeTime: null
-    lastTransitionTime: "2021-04-15T06:44:53Z"
-    status: "True"
-    type: Ready
 \end{lstlisting}
 
 \section{小结}
@@ -930,9 +916,10 @@ UnversalController自身依然是一个传统的Operator，用Go语言编写完�
 
 
 \section{自定义资源}
-YAML代码\ref{listing:1}是UC CRD的定义，通过kubectl向api-server提交这个yaml文件就可以在Kubernetes中注册一种新的资源类型``UniversalController''。这样就成功拓展了Kubernetes APIs，之后就可以使用这个新的API提交资源定义来注册控制器。
+YAML代码\ref{listing:1}是UC CRD的定义，给出了一个新的CustomResourceDefinition，通过kubectl向kube-apiserver提交这个YAML文件就可以在Kubernetes中注册一种新的资源类型``UniversalController''。这样就成功拓展了Kubernetes APIs，之后就可以使用这个新的API提交资源定义来注册控制器。
 
 YAML文件\ref{listing:catset-controller-config}是一个UC CRD资源的例子，定义了CatSet资源的控制器，它的行为几乎与Kubernetes原生资源的StatefulSet的控制器一致，是对StatefulSet的二次实现。
+
 \newpage
 \begin{lstlisting}[language=yaml,caption=UC CRD,label=listing:1]
 apiVersion: apiextensions.k8s.io/v1
@@ -950,32 +937,38 @@ spec:
 ...
 \end{lstlisting}
 
-
-%\begin{lstlisting}[language=yaml,caption=作为UC CRD示例的catset-controller,label=listing:ucsample]
-%apiVersion: universalcontroller.njuics.cn/v1alpha1
-%kind: UniversalController
-%metadata:
-%  name: catset-controller
-%spec:
-%  parentResource:
-%    apiVersion: mlhub.njuics.cn/v1alpha1
-%    resource: catsets
-%  childResources:
-%    - apiVersion: v1
-%      resource: pods
-%      updateStrategy:
-%        method: RollingRecreate
-%        statusChecks:
-%          conditions:
-%            - type: Ready
-%              status: "True"
-%    - apiVersion: v1
-%      resource: persistentvolumeclaims
-%  hooks:
-%    sync:
-%      webhook:
-%        url: "http://catset-ctrl.universalcontroller:8080"
-%\end{lstlisting}
+\newpage
+\begin{lstlisting}[language=yaml,caption=作为UC CRD示例的catset-controller,label=listing:catset-controller-config]
+apiVersion: universalcontroller.njuics.cn/v1alpha1
+kind: UniversalController
+metadata:
+  name: catset-controller
+spec:
+  parentResource:
+    apiVersion: mlhub.njuics.cn/v1alpha1
+    resource: catsets
+    revisionHistory:
+      fieldPaths:
+        - spec.template
+  childResources:
+    - apiVersion: v1
+      resource: pods
+      updateStrategy:
+        method: RollingRecreate
+        statusChecks:
+          conditions:
+            - type: Ready
+              status: "True"
+    - apiVersion: v1
+      resource: persistentvolumeclaims
+  hooks:
+    sync:
+      webhook:
+        url: "http://catset-controller.universalcontroller:8080"
+    finalize:
+      webhook:
+        url: "http://catset-controller.universalcontroller:8080"
+\end{lstlisting}
 
 
 一个UC CRD的``spec''有五个字段：parentResource、childResources、resyncPeriodSeconds、generateSelector和hooks。parentResource的类型是ResourceRule，用于指定父资源类型，也就是这个控制器实际管理的资源。ResourceRule只有两个字段``APIVersion''和``Resource''，用于确定一种资源类型。childResources是是一组ResourceRule，用于指定会被控制器生成的子资源类型。resyncPeriodSeconds被用于规定两次调谐之间间隔的时间，设置后就算工作队列当前是空的，但是距离上次调谐过去这么多时间后还是会去调谐。generateSelector是bool型的，如果为真，那么忽略父资源对象的标签选择器（如果存在的话），UniversalController会为其生成独一无二的标签选择器，避免与其他的资源冲突。这里的标签选择器都是为了筛选子资源，符合标签选择器的子资源都会被当做父资源的子资源。hooks是一组定义了控制器行为的lambda hook。
@@ -984,9 +977,7 @@ spec:
 
 Kubernetes的官方Go语言客户端库client-go，提供了dynamic模块，可以用于创建动态客户端，借助于动态客户端，只要知道资源的apiVersion和Kind，就可以对任意一种资源进行操作。UniversalController基于此，实现了支持动态资源类型的informer和indexer，用于订阅特定资源相关事件以及查找特定类型的资源，是自定义控制器的核心组件。
 
-代码段\ref{listing:client}是客户端的结构体和一些方法，UC首先需要用New方法得到一个Clientset类型的对象，对于各种资源，只要知道资源的apiVersion和kind，都可以用这个对象的Resource方法得到一个ResourceClient对象，该对象可以对这类资源进行各类CURD的操作，所有的资源都以Unstructured类型存储，Unstructured中只有一个字典类型的字段，实际是把资源以接近JSON的形式存储起来。
 
-\newpage
 \begin{lstlisting}[language=Go,caption=客户端实现,label=listing:client]
 type Clientset struct {
 	config    rest.Config
@@ -999,20 +990,10 @@ type ResourceClient struct {
 	rootClient dynamic.NamespaceableResourceInterface
 }
 func New(config *rest.Config, resources *dynamicdiscovery.ResourceMap) (*Clientset, error)
-func (cs *Clientset) Resource(apiVersion, resource string) (*ResourceClient, error) {
-	apiResource := cs.resources.Get(apiVersion, resource)
-	if apiResource == nil {
-		return nil, fmt.Errorf("discovery: can't find resource %s in apiVersion %s", resource, apiVersion)
-	}
-	return cs.resource(apiResource), nil
-}
+func (cs *Clientset) Resource(apiVersion, resource string) (*ResourceClient, error)
 func (cs *Clientset) resource(apiResource *dynamicdiscovery.APIResource) *ResourceClient {
 	client := cs.dc.Resource(apiResource.GroupVersionResource())
-	return &ResourceClient{
-		ResourceInterface: client,
-		APIResource:       apiResource,
-		rootClient:        client,
-	}
+	return &ResourceClient{ ResourceInterface: client, APIResource: apiResource, rootClient: client, }
 }
 func (rc *ResourceClient) AtomicUpdate(orig *unstructured.Unstructured, update func(obj *unstructured.Unstructured) bool) (result *unstructured.Unstructured, err error)
 
@@ -1021,11 +1002,7 @@ type Unstructured struct {
 }
 \end{lstlisting}
 
-
-\newpage
 \begin{lstlisting}[language=Go,caption=通知器（Informer）实现,label=listing:informer]
-// sharedResourceInformer is the actual, single informer that's shared by
-// multiple ResourceInformer instances.
 type sharedResourceInformer struct {
 	informer cache.SharedIndexInformer
 	lister   dynamiclister.Lister
@@ -1040,12 +1017,8 @@ func newSharedResourceInformer(client *dynamicclientset.ResourceClient, defaultR
 				return client.List(opts)
 			},
 			WatchFunc: client.Watch,
-		},
-		&unstructured.Unstructured{},
-		defaultResyncPeriod,
-		cache.Indexers{
-			cache.NamespaceIndex: cache.MetaNamespaceIndexFunc,
-		},
+		}, &unstructured.Unstructured{}, defaultResyncPeriod,
+		cache.Indexers{ cache.NamespaceIndex: cache.MetaNamespaceIndexFunc, },
 	)
 	sri := &sharedResourceInformer{
 		close:               close,
@@ -1061,18 +1034,13 @@ type ResourceInformer struct {
 	sharedResourceInformer *sharedResourceInformer
 	informerWrapper        *informerWrapper
 }
-func newResourceInformer(sri *sharedResourceInformer) *ResourceInformer {
-	return &ResourceInformer{
-		sharedResourceInformer: sri,
-		informerWrapper: &informerWrapper{
-			SharedIndexInformer:    sri.informer,
-			sharedResourceInformer: sri,
-		},
-	}
-}
+func newResourceInformer(sri *sharedResourceInformer) *ResourceInformer
 \end{lstlisting}
 
-代码段\ref{listing:informer}展示了如何在client的基础之上实现informer，informer会调用client的List和Watch方法来监听资源。SharedInformer的作用是让在一个进程中运行的控制器们共享订阅，避免重复订阅浪费内存和网络带宽。
+
+代码段\ref{listing:client}是客户端的结构体和一些方法，UC首先需要用New方法得到一个Clientset类型的对象，对于各种资源，只要知道资源的apiVersion和kind并且该资源在K8s中实际存在，都可以用这个对象的Resource方法得到一个ResourceClient对象，该对象可以对这类资源进行各类CURD的操作，所有的资源都以Unstructured类型存储，Unstructured中只有一个字典类型的字段，实际是把资源以接近JSON的形式存储起来。
+
+代码段\ref{listing:informer}展示了如何在client的基础之上实现informer，informer会调用client的List和Watch方法来监视资源。SharedInformer的作用是让在一个进程中运行的控制器们共享订阅，避免重复订阅浪费内存和网络带宽。会有一个字典用来存储资源类型到相应的SharedInformer的映射，如果需要监视一个新资源，会创建一个新的SharedInformer，封装为ResourceInformer以供使用；如果这个资源已经被监视，则返回的ResourceInformer会复用之前创建的SharedInformer。
 
 \section{控制器实现}
 
@@ -1080,21 +1048,22 @@ func newResourceInformer(sri *sharedResourceInformer) *ResourceInformer {
 
 UC Controller监视着UC类型的资源，提供了UC相关的服务，同时管理着通过UC CRD创建的自定义控制器。它的``Handle Object''部分确保集群状态与UC CRD期望的一致，也就是保持所有注册的自定义控制器正确运行。
 
-而Parent Resource Controller监视着Parent Resource，它的``Handle Object部分''是UniversalController用户自定义的代码段，一般是若干个函数。
-
-当开发者使用UC的声明式API创建控制器时，开发者需要提供的函数中只包含当前控制器所特有的业务逻辑。这些函数会通过webhook调用，所以开发者可以用任何能够处理网络请求和JSON的编程语言来编写这些函数。
+而Parent Resource Controller监视着Parent Resource，它的``Handle Object部分''是UniversalController用户自定义的代码段，一般是若干个函数。当开发者使用UC的声明式API创建控制器时，开发者需要提供的函数中只包含当前控制器所特有的业务逻辑。这些函数会通过webhook调用，所以开发者可以用任何能够处理网络请求和JSON的编程语言来编写这些函数。
 
 Parent Resource Controller会执行一个调谐循环，在调谐时调用开发者提供的函数，之后再决定做什么。UniversalController为每一个Parent Resource Controller预先准备了调谐循环的通用逻辑，开发者不需要借助代码生成器，可以完全将精力集中在编写调谐函数上。现阶段UniversalController接受的调谐器是Webhook形式的，开发者可以借助serverless工具，例如kubeless或者openFaas，将函数发布成一个Web服务，再提供给控制器。借助UC的API和serverless就可以使开发工作完全集中于业务逻辑，免去了很多琐碎的工作和模版代码。
+
 
 接下来介绍UC Controller和Parent Resource Controller的``Handle Object''分别是怎么实现的。
 
 \subsection{同步UC CRD资源}
+
+代码段\ref{listing:syncuniversalcontroller}中的syncUniversalController方法根据当前的UC CRD资源定义进行调谐，如果这个资源对应的控制器已经存在，并且不需要修改，spec完全一致，那么不用做任何事，本次调谐结束，否则就删除旧的控制器。接下来新建Parent Resource的控制器，并启动，和一般的controller-mananger模式中一样，这个Parent Resource的控制器运行在单独的一个Go协程中，只是此时UC Controller承担了manager的职责，所以UC Controller是controller-controller。
+
 \begin{lstlisting}[language=Go,caption=同步UC CRD,label=listing:syncuniversalcontroller]
 func (u *Universalcontroller) syncUniversalController(uc *v1alpha1.
 	UniversalController) error {
 	if pc, ok := u.parentControllers[uc.Name]; ok {
 		if apiequality.Semantic.DeepEqual(uc.Spec, pc.uc.Spec) {
-			// Nothing has changed.
 			return nil
 		}
 		pc.Stop()
@@ -1102,55 +1071,13 @@ func (u *Universalcontroller) syncUniversalController(uc *v1alpha1.
 	}
 	pc, err := newParentController(u.resources, u.dynClient, u.dynInformers, 
 		u.mcClient, u.revisionLister, uc, u.numWorkers)
-	if err != nil {
-		return err
-	}
 	pc.Start()
 	u.parentControllers[uc.Name] = pc
 	return nil
 }
 \end{lstlisting}
 
-代码段\ref{listing:syncuniversalcontroller}中的syncUniversalController方法根据当前的UC CRD资源定义进行调谐，如果这个资源对应的控制器已经存在，并且不需要修改，spec完全一致，那么不用做任何事，本次调谐结束，否则就删除旧的控制器。接下来新建Parent Resource的控制器，并启动，和一般的controller-mananger模式中一样，这个Parent Resource的控制器运行在单独的一个Go协程中，只是此时UC Controller承担了manager的职责，所以UC Controller是controller-controller。
-
 \subsection{同步父资源（Parent Resource）}
-
-\newpage
-
-\begin{lstlisting}[language=Go,caption=同步父资源,label=listing:syncparent]
-func (pc *parentController) syncParentObject(parent *unstructured.Unstructured) error {
-	observedChildren, err := pc.claimChildren(parent)
-	if err != nil {
-		return err
-	}
-	relatedObjects, err := pc.customize.GetRelatedObjects(parent)
-	if err != nil {
-		return err
-	}
-	syncResult, err := pc.syncRevisions(parent, observedChildren, relatedObjects)
-	if err != nil {
-		return err
-	}
-	desiredChildren := common.MakeChildMap(parent, syncResult.Children)
-	if syncResult.ResyncAfterSeconds > 0 {
-		pc.enqueueParentObjectAfter(parent, time.Duration(syncResult.ResyncAfterSeconds*float64(time.Second)))
-	}
-	var manageErr error
-	if parent.GetDeletionTimestamp() == nil || pc.finalizer.ShouldFinalize(parent) {
-		// Reconcile children.
-		if err := common.ManageChildren(pc.dynClient, pc.updateStrategy, parent, observedChildren,
-			desiredChildren); err != nil {
-			manageErr = fmt.Errorf("can't reconcile children for %v %v/%v: %v",
-				pc.parentResource.Kind, parent.GetNamespace(), parent.GetName(), err)
-		}
-	}
-	if _, err := pc.updateParentStatus(parent, syncResult.Status); err != nil {
-		return fmt.Errorf("can't update status for %v %v/%v: %v", pc.parentResource.Kind,
-			parent.GetNamespace(), parent.GetName(), err)
-	}
-	return manageErr
-}
-\end{lstlisting}
 
 代码段\ref{listing:syncparent}展示了Parent Resource Controller对Parent Resource的同步过程：
 \begin{enumerate}
@@ -1161,24 +1088,43 @@ func (pc *parentController) syncParentObject(parent *unstructured.Unstructured) 
 	\item 最后更新Parent Resource Status。
 \end{enumerate}
 
+\begin{lstlisting}[language=Go,caption=同步父资源,label=listing:syncparent]
+func (pc *parentController) syncParentObject(parent *unstructured.Unstructured) error {
+	observedChildren, err := pc.claimChildren(parent)
+	relatedObjects, err := pc.customize.GetRelatedObjects(parent)
+	syncResult, err := pc.syncRevisions(parent, observedChildren, relatedObjects)
+	desiredChildren := common.MakeChildMap(parent, syncResult.Children)
+	if syncResult.ResyncAfterSeconds > 0 {
+		pc.enqueueParentObjectAfter(parent, time.Duration(syncResult.ResyncAfterSeconds*float64(time.Second)))
+	}
+	if parent.GetDeletionTimestamp() == nil || pc.finalizer.ShouldFinalize(parent) {
+		common.ManageChildren(pc.dynClient, pc.updateStrategy, parent, observedChildren, desiredChildren)
+	}
+	pc.updateParentStatus(parent, syncResult.Status)
+	return err
+}
+\end{lstlisting}
+
 \section{声明式的更新策略}
 \subsection{更新策略介绍}
-UniversalController提供了很多更新策略，开发者可以通过声明式接口使用它们，而不用写任何代码。
-\begin{itemize}
+UniversalController提供了很多更新策略，开发者可以通过声明式接口使用它们，而不用写任何代码。现有的5种更新策略如下：
+\begin{enumerate}
 	\item 待删除后更新（OnDelete）：不更新现有的子资源，直到它被其他的客户端例如kubectl删除。
 	\item 立刻重建（ReCreate）：立即删除任何不符合期望状态（state）的子资源，并根据期望状态（state）重新创建。
 	\item 就地更新（InPlace）：立刻就地更新任何不符合期望状态（state）的子资源。
 	\item 滚动重建（RollingRecreate）：每次调谐删除一个与期望状态（state）不同的子资源，并在处理下一个子资源之前根据期望状态（state）重建它。在任意时刻，如果已经更新的子资源中有一个或多个状态检查失败，则暂停滚动更新。
 	\item 滚动就地更新（RollingInPlace）：每次更新一个与期望状态（state）不同的子资源。如果已经更新的子资源中有一个或多个状态检查失败，则暂停滚动更新。
-\end{itemize}
+\end{enumerate}
 
 不同的资源适合不同的更新策略，例如Pod一般会用ReCreate或者RollingRecreate，因为当一个已经在Kubernetes中存在的Pod，它能修改的只有metadata中的标签（labels）和附加说明（annotations），spec中的字段都不能修改，如果需要修改，就只能删除重建。而Deployment除了名字和命名空间都可以修改，用InPlace或者RollingInPlace显然更合适。
 
 \subsection{滚动更新版本控制}\label{section:rolling-control}
 ControllerRevision是UniversalController使用的一个内部API，用于实现声明式的滚动更新，主要受到Kubernetes原生资源StatefulSet和DaemonSet使用的ControllerRevision启发后实现。
 
-每个ControllerRevision都与一个资源相关，名称是该资源的类型、资源所在的apiGroup以及版本后缀组成的。版本后缀是对该资源指定字段的哈希结果。
+每个ControllerRevision都与一个资源相关，名称是该资源的类型、资源所在的apiGroup以及版本后缀组成的。版本后缀是对该资源指定字段的哈希结果。默认情况下，一旦一个特定的父资源被删除，属于该资源的ControllerRevision们会被垃圾回收处理掉。但是，也可以在父资源的删除过程中抛弃ControllerRevision，不再与这个父资源有关系的ControllerRevision也就不会被删除了，就可以创建另一个父资源来接管它。接管的规则基于父资源的标签选择器，和ReplicaSet接管Pods的方式一样。
 
+YAML文件\ref{listing:controllerrevision}是ControllerRevision的一个例子，parentPatch字段存储了父资源的部分表示，它只包含UC CRD的revisionHistory字段列出的那些参与滚动更新的字段，默认是spec。例如，如果一个UC CRD的revisionHistory是数组[``spec.template'']，那么parentPath只会包含spec.template和嵌套在其中的子字段。这样就可以在滚动更新的过程中做出选择性行为。任何不属于revisionHistory的字段如果被更新，更新都会立即生效，而不是进行滚动更新。
+\newpage
 \begin{lstlisting}[language=yaml,caption=ControllerRevision示例,label=listing:controllerrevision]
 apiVersion: universalcontroller.njuics.cn/v1alpha1
 kind: ControllerRevision
@@ -1202,19 +1148,11 @@ children:
   - nginx-backend-2
 \end{lstlisting}
 
-默认情况下，一旦一个特定的父资源被删除，属于该资源的ControllerRevision们会被垃圾回收处理掉。但是，也可以在父资源的删除过程中抛弃ControllerRevision，不再与这个父资源有关系的ControllerRevision也就不会被删除了，就可以创建另一个父资源来接管它。接管的规则基于父资源的标签选择器，和ReplicaSet接管Pods的方式一样。
 
-YAML文件\ref{listing:controllerrevision}是ControllerRevision的一个例子，parentPatch字段存储了父资源的部分表示，它只包含UC CRD的revisionHistory字段列出的那些参与滚动更新的字段，默认是spec。
-
-例如，如果一个UC CRD的revisionHistory是数组[\"spec.template\"]，那么parentPath只会包含spec.template和嵌套在其中的子字段。
-
-这样就可以在滚动更新的过程中做出选择性行为。任何不属于revisionHistory的字段如果被更新，更新都会立即生效，而不是进行滚动更新。
-
-children字段存储了一个``属于''这个ControllerRevison的子资源列表，UniversalController就是通过这个字段跟踪一个子资源属于哪个ControllerRevision。在滚动更新过程中，如果一个还没有更新的Pod被用户通过kubectl删除了，那么它应该重建它被删除之前的版本，而不是最新版本，以保证滚动更新的粒度与次序不被打乱。
+children字段存储了一个``属于''这个ControllerRevison的子资源列表，UniversalController就是通过这个字段跟踪一个子资源属于哪个ControllerRevision。children字段的值是按照apiGroup和kind进行分组的。对于每个apiGroup和kind的组合，存储了一个对象名称列表。在滚动更新过程中，如果一个还没有更新的Pod被用户通过kubectl删除了，那么它应该重建它被删除之前的版本，而不是最新版本，以保证滚动更新的粒度与次序不被打乱。
 
 当UniversalController决定将一个子资源更新到另一个版本时。它首先会更新相关的ControllerRevison来表达这个意图，这些更新被提交后，它就会根据所配置的子资源更新策略开始更新该子资源。这确保了滚动更新的中间结果在api-server中被持久化，就算UniversalController重启，也能从中断的位置继续更新。
 
-children字段的值是按照apiGroup和kind进行分组的。对于每个apiGroup和kind的组合，存储了一个对象名称列表。
 \section{调谐器接口实现}
 在示例的YAML文件\ref{listing:catset-controller-config}中hooks.sync就定义了当前控制器使用的调谐器。编写调谐器是在开发者基于UniversalController开发Operator时唯一需要的自定义代码编写工作。编写完成后需要以webhook的形式发布出来，借助serverless工具即可省去网络相关代码的编写。之后再UC CRD的相应字段填写服务地址就完成了控制器的配置。UC CRD中的Webhook结构如表\ref{table:webhook}所示。在webhook中，service的结构如表\ref{table:service-reference}所示。
 
@@ -1248,96 +1186,76 @@ children字段的值是按照apiGroup和kind进行分组的。对于每个apiGro
   \caption{Service Reference}\label{table:service-reference}
 \end{table}
 
-\paragraph{Hooks}
+\subsection{Hooks}
 在UC CRD的spec中，hooks字段有以下三个子字段：sync、finalize和customize。sync用于指定如何调用同步钩子。finalize用于指定如何调用收尾（finalize）钩子。customize用于指定如何调用Customize钩子。它们都对应了一种Hook类型，下面开始分别介绍。
 
-\subparagraph{同步钩子}
+\subsubsection{同步钩子}
 
 同步钩子被用来指定为给定的父资源创建或维护那些子资源，即期望状态（state）。根据UC CRD的spec，UniversalController会收集所有需要的资源，并向同步钩子发送最新观察到的状态（state）。同步钩子返回期望状态后，UniversalController会开始通过一系列操作向它收敛，操作包括适当地创建、删除和更新对象。
 
 可以简单的把同步钩子看做一个脚本，它生成json发送到``server-side apply''，同时，与一次性的客户端生成器不同的是，这个脚本可以观察到集群中最新的状态（state），并且会在观察到的状态（state）发生变化时自动被执行。
 
-\textbf{同步钩子请求}
+\paragraph{（1）同步钩子请求}
+一个请求中只会包含一个父资源，所以同步钩子一次只需要考虑一个父资源。请求体是一个JSON对象，它的字段包括parent、children、related和finalizing。parent对象是一个json形式的父资源，和用kubectl get <parent-resource> <parent-name> -o json得到的结果一样。children对象存储了与父资源相关的子资源们，是通过标签选择器筛选得到的。related对象只有当Customize钩子存在时，会存储相关资源，否则为空。finalizing是布尔型的，在调用同步钩子是始终为false。
 
-一个请求中只会包含一个父资源，所以同步钩子一次只需要考虑一个父资源。
+children对象的每个字段都代表UC CRD的spec中指定的子资源类型之一。每个子资源类型的字段名是<kind>.<apiVersion>。举例来说，Pods的字段名是Pod.v1，而StatefulSets的字段名是StatefulSet.apps/v1。在每个字段中（例如在children['Pod.v1']中），存储这一个字典，键是当前资源标识，值是该资源的json表示。如果父资源和子资源的作用域相同，都是集群的或者都是命名空间的，那么键就只是子资源的名称，如果父资源是集群作用域，而子资源是命名空间作用域，那么键的形式是{.metadata.namespace}/{.metadata.name}。这是为了区分可能存在的在不同命名空间的两个同名子资源。父资源是命名空间作用域而子资源是集群作用域的情况不可能出现。举例来说，如果父资源在my-namespace命名空间下，那么在my-namespace命名空间下的一个名称为my-pod的Pod会被存储在request.children['Pod.v1']['my-pod']。如果父资源是集群作用域的，这个Pod会被存储在request.children['Pod.v1']['my-namespace/my-pod']。每个子资源类型总是有一个入口，即使在同步时没有观察到该类型的子资源。例如，如果Pod是子资源类型之一，但没有任何现有的Pods资源与父资源的选择器相匹配，请求体的形式是代码\ref{listing:children-pod}，而不是代码\ref{listing:children}。
 
-请求体是一个JSON对象，它的字段包括parent、children、related和finalizing。parent对象是一个json形式的父资源，和用kubectl get <parent-resource> <parent-name> -o json得到的结果一样。children对象存储了与父资源相关的子资源们，是通过标签选择器筛选得到的。related对象只有当Customize钩子存在时，会存储相关资源，否则为空。finalizing是布尔型的，在调用同步钩子是始终为false。
+related字段下存储着相关资源对象，格式与children字段下的对象相同，表示与给定父资源的Customize钩子响应相匹配的资源，这些资源不由控制器管理，因此不可修改，但可以将它们当做系统上下文，进而得到子资源的期望配置。当观察到相关资源被更新时，就算父资源和子资源都没有变化，同步钩子也会被触发。
 
-children对象的每个字段都代表UC CRD的spec中指定的子资源类型之一。每个子资源类型的字段名是<kind>.<apiVersion>。举例来说，Pods的字段名是Pod.v1，而StatefulSets的字段名是StatefulSet.apps/v1。
-
-在每个字段中（例如在children['Pod.v1']中），存储这一个字典，键是当前资源标识，值是该资源的json表示。如果父资源和子资源的作用域相同，都是集群的或者都是命名空间的，那么键就只是子资源的名称，如果父资源是集群作用域，而子资源是命名空间作用域，那么键的形式是{.metadata.namespace}/{.metadata.name}。这是为了区分可能存在的在不同命名空间的两个同名子资源。父资源是命名空间作用域而子资源是集群作用域的情况不可能出现。举例来说，如果父资源在my-namespace命名空间下，那么在my-namespace命名空间下的一个名称为my-pod的Pod会被存储在request.children['Pod.v1']['my-pod']。如果父资源是集群作用域的，这个Pod会被存储在request.children['Pod.v1']['my-namespace/my-pod']。每个子资源类型总是有一个入口，即使在同步时没有观察到该类型的子资源。例如，如果Pod是子资源类型之一，但没有任何现有的Pods资源与父资源的选择器相匹配，请求体的形式是：
-\begin{lstlisting}[language=json,caption=请求体,label=listing:7]
+\begin{lstlisting}[language=json,caption=请求体,label=listing:children-pod]
 {
   "children": {
     "Pod.v1": {}
   }
 }
 \end{lstlisting}
-而不是
-\begin{lstlisting}[language=json,caption=异常请求体,label=listing:8]
+
+\begin{lstlisting}[language=json,caption=异常请求体,label=listing:children]
 {
   "children": {}
 }
 \end{lstlisting}
 
-related字段下存储着相关资源对象，格式与children字段下的对象相同，表示与给定父资源的Customize钩子响应相匹配的资源，这些资源不由控制器管理，因此不可修改，但可以将它们当做系统上下文，进而得到子资源的期望配置。当观察到相关资源被更新时，就算父资源和子资源都没有变化，同步钩子也会被触发。
-
-\textbf{同步钩子响应}
-
+\paragraph{（2）同步钩子响应}
 同步钩子的响应体的字段包括status、children和resyncAfterSeconds。status是一个JSON对象，将完全取代父资源中的状态字段。children是一组JSON对象组成的列表，代表所有期望存在的子资源。resyncAfterSeconds是下次同步的时间间隔，以秒为单位，类型是浮点数。
 
-状态（status）的设置完全由用户代码段决定，状态（status）应该根据最后观察到的状态（state）来填写，是一个当前值，而不是期望值。
-
-响应体中的children字段是一个对象数组，而不是请求体中那样的字典，每一个对象都是一个期望存在的子资源。UniversalController按照类型和名称对发送的对象进行分组，以方便用户简化脚本，但实际上这是多余的，因为每个对象都包含自己的apiVersion、kind和metadata.name。
+状态（status）的设置完全由用户代码段决定，状态（status）应该根据最后观察到的状态（state）来填写，是一个当前值，而不是期望值。而响应体中的children字段是一个对象数组，而不是请求体中那样的字典，每一个对象都是一个期望存在的子资源。UniversalController按照类型和名称对发送的对象进行分组，以方便用户简化脚本，但实际上这是多余的，因为每个对象都包含自己的apiVersion、kind和metadata.name。
 
 任何在请求体中存在的子资源，如果调谐逻辑拒绝在响应体中返回，它会被UniversalController在收到响应后删除。但是，调谐逻辑不应该直接把请求中的子资源复制到返回结果中，因为它们的形式不同，返回的结果应该完全根据父资源的specification和系统上下文重新生成。用户应该把响应体中的每个子资源看作是被发送到``kubectl apply''，只需要设置用户关心的字段。
 
 如果返回的resyncAfterSeconds被设置为一个大于0的值，同步钩子在延迟一段时间后会被再次调用，请求体中的parent字段的值依然是这个特定的父资源，其他字段依据父资源设置。这个设置时一次性的，不会周期性重新同步，而且只针对这个特定的父资源。
 
-\subparagraph{Finalize钩子}
-如果定义了finalize钩子，UniversalController将为父资源添加一个finalizer，这将防止它被直接删除，直到finilize钩子执行完，并且钩子的响应表明清理已经完成，它才能真正的被删除。
-
-这对于清理可能在外部系统中创建的资源是很有用的。如果定义finalize钩子，那么当一个父对象被删除时，垃圾回收器会立即删除所有的子对象，而不会调用任何钩子。
-
-finalize钩子的语义大多与同步钩子的语义相当。UniversalController将尝试调谐在children字段中返回的期望状态（state），并将在父资源上设置状态（status）。主要的区别是，当父资源正在被删除且需要清理时，会调用finalize钩子而不是同步钩子。
+\subsubsection{Finalize钩子}
+如果定义了finalize钩子，UniversalController将为父资源添加一个finalizer，这将防止它被直接删除，而是直到finilize钩子执行完，并且钩子的响应表明清理已经完成，它才能真正的被删除。这对于清理可能在外部系统中创建的资源是很有用的。如果没有定义finalize钩子，那么当一个父对象被删除时，垃圾回收器会立即删除所有的子对象，而不会调用任何钩子。finalize钩子的语义大多与同步钩子的语义相当。UniversalController将尝试调谐在children字段中返回的期望状态（state），并将在父资源上设置状态（status）。主要的区别是，当父资源正在被删除且需要清理时，会调用finalize钩子而不是同步钩子。
 
 当观察到的状态发生变化时，UniversalController可能会多次调用finalize钩子，甚至可能是在一次表明已经完成finalize的调用之后。用户编写的处理程序应该知道如何检查还需要做什么，如果没有什么需要做的，就报告成功。
 
 同步钩子和finalize钩子都有一个叫做finalizing的请求字段，用来指示到底调用了哪个钩子，在同步钩子请求中始终为false，在finalize钩子请求中始终为true。这让用户可以自己选择将 finalize钩子作为一个单独的处理程序还是作为同步处理程序中的一个分支来实现，这取决于它们共享多少逻辑。要为两者使用相同的处理程序，只需定义一个 finalize 钩子，并将其设置为与同步钩子相同的值。
 
-\textbf{finalize钩子请求}
-
+\paragraph{（1）finalize钩子请求}
 finalize钩子的请求体格式与同步钩子的完全相同，只是finalizing字段始终为true而已。如果同步钩子和finalize钩子共享同一段处理程序，可以使用finalizing字段来判断是该清理还是进行正常的同步。如果为finalize定义了一个单独的处理程序，就不需要检查finalizing字段，因为它总是为真。
 
-\textbf{finalize钩子响应}
-
+\paragraph{（2）finalize钩子响应}
 finalize钩子响应体拥有所有同步钩子响应体的字段，但还有一个额外的字段finalized，是一个布尔值，用于表示清理是否已经结束。
 
-\subparagraph{Customize钩子}
+\subsubsection{Customize钩子}
 
 如果定义了Customize钩子，UniversalController会询问它哪些资源是相关资源，应该放入同步钩子和finalize钩子的请求中。这在有些场景下非常有用。一个例子是，用户想实现一个控制器将指定的ConfigMaps复制到每个Namespace中。另一个例子是有些控制器希望能够引用相关对象的一些信息，例如，从有些Pod资源获取env部分。如果没有定义Customize钩子，那么同步钩子和finalize钩子的请求体中related都将是空的。
 
 当前Customize钩子的请求体中不会提供任何关于集群当前状态（state）的信息，只包含父资源，所以相关对象的集合只取决于父资源的spec。
-
-\textbf{Customize钩子请求}
-
+\paragraph{（1）Customize钩子请求}
 Customize钩子的请求体只有一个parent字段，用于存储一个父资源的json表示。
-
-\textbf{Customize钩子响应}
-
-Customize钩子的响应体只有一个字段``relatedResources''，存放了一组JSON对象，每个JSON对象是一个ResourceRule，用于筛选资源。
-
-ResourceRule的字段包括apiVersion、resource、labelSelector、namespace和name。apiVersion是资源的apiVersion，例如apps/v1、v1、batch/v1等。resource是资源的小写名称，例如deployments, replicasets, statefulsets。labelSelector是用于筛选资源的标签选择器，如果为空，用namespace和names字段去定位资源。namespace是选填项，指资源所在的命名空间。name也是选填项，代表资源名称列表。
-
-如果设置了labelSelector，namspace字段和name字段就应该都为空，反之亦然，它们不应该被同时设置，它们代表了两种不同的资源筛选方式，在一次筛选中只能使用一种。
-
-UniversalController收到Customize钩子响应后就回去用这一系列资源筛选规则找到符合调节的资源们，并放入同步或finalize钩子的请求体中。
+\paragraph{（2）Customize钩子响应}
+Customize钩子的响应体只有一个字段``relatedResources''，存放了一组JSON对象，每个JSON对象是一个ResourceRule，用于筛选资源。ResourceRule的字段包括apiVersion、resource、labelSelector、namespace和name。apiVersion是资源的apiVersion，例如apps/v1、v1、batch/v1等。resource是资源的小写名称，例如deployments, replicasets, statefulsets。labelSelector是用于筛选资源的标签选择器，如果为空，用namespace和names字段去定位资源。namespace是选填项，指资源所在的命名空间。name也是选填项，代表资源名称列表。如果设置了labelSelector，namspace字段和name字段就应该都为空，反之亦然，它们不应该被同时设置，它们代表了两种不同的资源筛选方式，在一次筛选中只能使用一种。UniversalController收到Customize钩子响应后就回去用这一系列资源筛选规则找到符合调节的资源们，并放入同步或finalize钩子的请求体中。
 
 \section{小结}
 本章详细介绍了各个组件或功能在UniversalController中是设计与实现的，涉及到了各方面的细节。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{实验评估}\label{chapter_experiments}
+
+本章基于UniversalController重新实现了一些现有的Operators，同时进行了内存和网络方面的性能测试。
+
 \section{用例1：重新实现sample-controller}\label{section:sample-controller}
 \subsection{介绍}
 sample-controller是Kubernetes官方提供的一个Operator编写样例，项目地址是https://github.com/kubernetes/sample-controller。
@@ -1345,31 +1263,17 @@ sample-controller是Kubernetes官方提供的一个Operator编写样例，项目
 它是一个简单的控制器，监视通过CustomResourceDefinition定义的Foo资源，为每个Foo保证一个对应的Deployment存在。sample-controller展示了一个标准的Operator是如何实现并工作的，使用client-go与Kubernetes api-server交互，编写控制器的各个组件，没有使用更高级的抽象包。
 \subsection{实现}
 
-\begin{lstlisting}[language=yaml,caption=sample-controller的配置文件,label=listing:sample-controller-config]
-apiVersion: universalcontroller.njuics.cn/v1alpha1
-kind: UniversalController
-metadata:
-  name: sample-controller
-spec:
-  generateSelector: true
-  parentResource:
-    apiVersion: njuics.cn/v1alpha1
-    resource: foos
-  childResources:
-  - apiVersion: apps/v1
-    resource: deployments
-    updateStrategy:
-      method: InPlace
-  hooks:
-    sync:
-      webhook:
-        url: "http://sample-controller.universalcontroller:8080"
-\end{lstlisting}
+首先要填写sample-controller的UC CRD。sample-controller的父资源的apiVersion是njuics.cn/v1alpha1，resource是foos。子资源只有一种，apiVersion是apps/v1，resource是deployments，更新策略选择InPlace。hooks.sync.webhook.url设为``http://sample-controller.universalcontroller:8080''，是调谐逻辑的入口。
 
+JavaScript代码\ref{listing:sample-controller}就是所有需要写的代码，而不是一个代码段。它的逻辑很简单，从请求体中取出Foo资源，根据它的定义生成期望的Deployment，Foo资源的status只有一个字段表示可用的副本数，如果Deployment还不存在，可用副本数为0，否则就是该Deployment的status.availableReplicas的值，最后将status和Deployment返回即可。
+
+接下来借助kubeless将这个函数部署成web服务，只需要一条命令
+``kubeless -n universalcontroller function deploy sample-controller --runtime nodejs10 --from-file sync.js --handler sync.handler''。之后在universalcontroller命名空间下会生成一个名叫sample-controller的Service资源和一个名叫sample-controller的Deployment资源，于是在集群内部就可以用http://sample-controller.universalcontroller:8080访问这个服务，这个url就是要生成的controller使用的同步钩子。最后使用``kubectl apply''命令提交定义控制器的UC CRD完成控制器的注册。
 
 \begin{lstlisting}[language=JavaScript,caption=sample-controller的实现代码,label=listing:sample-controller]
 module.exports =  {
   handler: (event, context) => { let observed = event['data']; return reconcile(observed.parent, observed.children);} };
+
 var reconcile = function (foo, children) {
     let desiredChildren = [];
     let currentStatus = {};
@@ -1381,7 +1285,6 @@ var reconcile = function (foo, children) {
     return {status: currentStatus, children: desiredChildren};
 }
 var desiredDeployment = function (foo) {
-  let lbls = {app: "sample"};
   let deploy = {
     apiVersion: "apps/v1",
     kind: "Deployment",
@@ -1391,66 +1294,32 @@ var desiredDeployment = function (foo) {
     },
     spec: {
       replicas: foo.spec.replicas,
-      selector: {matchLabels: lbls},
-      template: {
-        metadata: {labels: lbls},
-        spec: {
-          containers: [{
-              name: "nginx",
-              image: "nginx:stable"
-            }]
-        }
-      }
+      template: 
+      	[...]
     }
   };
   return deploy;
 };
 \end{lstlisting}
 
-YAML文件\ref{listing:sample-controller-config}是sample-controller的定义文件，7-9行指定了它需要处理的父资源类型，10-12行指定了子资源类型。18行是用户的调谐逻辑的入口。
 
-JavaScript代码\ref{listing:sample-controller}就是所有需要写的代码，而不是一个代码段。它的逻辑很简单，从请求体中取出Foo资源，根据它的定义生成期望的Deployment，Foo资源的status只有一个字段表示可用的副本数，如果Deployment还不存在，可用副本数为0，否则就是该Deployment的status.availableReplicas的值，最后将status和Deployment返回即可。
-
-接下来借助kubeless将这个函数部署成web服务，只需要一条命令：
-kubeless -n universalcontroller function deploy sample-controller --runtime nodejs10 --from-file sync.js --handler sync.handler
-
-之后在universalcontroller命名空间下会生成一个名叫sample-controller的Service资源和一个名叫sample-controller的Deployment资源，于是在集群内部就可以用http://sample-controller.universalcontroller:8080访问这个服务，这个url就是要生成的controller使用的同步钩子。最后使用``kubectl apply''命令提交YAML文件\ref{listing:sample-controller-config}完成控制器的注册。
 \section{用例2：重新实现tf-operaotr}
 \subsection{介绍}
-tf-operator由kubeflow社区开发，项目地址为https://github.com/kubeflow/tf-operator，它提供了TFJob这个Kubernetes自定义资源，使其能够轻松地在Kubernetes上运行分布式或非分布式TensorFlow任务。
+tf-operator由kubeflow社区开发，项目地址为https://github.com/kubeflow/tf-operator，它提供了TFJob这个Kubernetes自定义资源，使其能够轻松地在Kubernetes上运行分布式或单机TensorFlow任务。如图\ref{fig:tfjobtrans}所示，它的控制器会自行编排Pod和Service资源来实现各个训练节点的启动以及它们之间的通信。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{pics/tfjobtrans.png}\\
+  \caption{TFJob的编排}\label{fig:tfjobtrans}
+\end{figure}
+
 \subsection{实现}
 
-YAML文件\ref{listing:tensorflow-controller-config}是tensorflowjob-controller的声明式定义。
+首先要填写tensorflowjob-controller的UC CRD。tensorflowjob-controller的父资源的apiVersion是mlhub.njuics.cn/v1alpha1，resource是tensorflowjobs。子资源有两种，第一种的apiVersion是v1，resource是services，更新策略选择InPlace；第二种的apiVersion是v1，resource是pods，更新策略是ReCreate。hooks.sync.webhook.url设为``http://tensorflow-controller.universalcontroller:8080''，是调谐逻辑的入口。
 
-tf-operator依然用JavaScript实现，但实现逻辑相当复杂，总代码行数为408行，核心代码为代码段\ref{listing:tensorflowjob-controller}。原版tf-operator中的逻辑都转译了过来，包括根据不同的副本类型使用当前tfjob资源中相应的模版来创建Pod，为每一个Pod创建一个Service，分别统计每种副本的状态来更新tfjob的status等。
 
 \newpage
-\begin{lstlisting}[language=yaml,caption=tensorflowjob-controller的配置文件,label=listing:tensorflow-controller-config]
-apiVersion: universalcontroller.njuics.cn/v1alpha1
-kind: UniversalController
-metadata:
-  name: tensorflowjob-controller
-spec:
-  parentResource:
-    apiVersion: mlhub.njuics.cn/v1alpha1
-    resource: tensorflowjobs
-  childResources:
-    - apiVersion: v1
-      resource: services
-      updateStrategy:
-        method: InPlace
-    - apiVersion: v1
-      resource: pods
-      updateStrategy:
-        method: ReCreate
-  hooks:
-    sync:
-      webhook:
-        url: "http://tensorflow-controller.universalcontroller:8080"
-\end{lstlisting}
-
-
-\begin{lstlisting}[language=JavaScript,caption=tensorflowjob-controller的实现代码,label=listing:tensorflowjob-controller]
+\begin{lstlisting}[language=JavaScript,caption=tensorflowjob-controller的部分实现代码,label=listing:tensorflowjob-controller]
 let tfjob = observed.parent;
 let status = deepCopy(tfjob.status);
 let observedPods = Object.values(observed.children['Pod.v1']);
@@ -1463,9 +1332,8 @@ for (let rtype of Object.keys(replicas)) {
   let numReplicas = spec.replicas;
   let podSlices = getPodSlices(pods, numReplicas);
   for (let index = 0; index < podSlices.length; index++) {
-    if (index < numReplicas) {
+    if (index < numReplicas)
       desiredChildren.push(newSVC(tfjob, rtype, index));
-    }
     let podSlice = podSlices[index];
     if (podSlice.length === 1) {
       let pod = podSLice[0];
@@ -1493,7 +1361,7 @@ for (let rtype of Object.keys(replicas)) {
 }
 \end{lstlisting}
 
-
+tf-operator依然用JavaScript实现，但实现逻辑相当复杂，总代码行数为408行，核心代码段为代码\ref{listing:tensorflowjob-controller}。原版tf-operator中的逻辑都转译了过来，包括根据不同的副本类型使用当前tfjob资源中相应的模版来创建Pod，为每一个Pod创建一个Service，分别统计每种副本的状态来更新tfjob的status等。
 
 接下来借助kubeless将这个函数部署成web服务，部署命令为：
 
@@ -1506,150 +1374,92 @@ kubeless -n universalcontroller function deploy tensorflow-controller --runtime 
 CatSet是对Kubernetes原生资源StatefulSet的重新实现，同时可以展示滚动更新的使用。
 \subsection{实现}
 
-\begin{lstlisting}[language=yaml,caption=catset-controller的配置文件,label=listing:catset-controller-config]
----
-apiVersion: universalcontroller.njuics.cn/v1alpha1
-kind: UniversalController
-metadata:
-  name: catset-controller
-spec:
-  parentResource:
-    apiVersion: mlhub.njuics.cn/v1alpha1
-    resource: catsets
-    revisionHistory:
-      fieldPaths:
-        - spec.template
-  childResources:
-    - apiVersion: v1
-      resource: pods
-      updateStrategy:
-        method: RollingRecreate
-        statusChecks:
-          conditions:
-            - type: Ready
-              status: "True"
-    - apiVersion: v1
-      resource: persistentvolumeclaims
-  hooks:
-    sync:
-      webhook:
-        url: "http://catset-controller.universalcontroller:8080"
-    finalize:
-      webhook:
-        url: "http://catset-controller.universalcontroller:8080"
-\end{lstlisting}
+YAML文件\ref{listing:catset-controller-config}是catset-controller的声明式定义。CatSet的spec结构与StatefulSet的spec结构完全一样。
 
-\begin{lstlisting}[language=yaml,caption=CatSet资源示例,label=listing:catset-sample]
-apiVersion: mlhub.njuics.cn/v1alpha1
-kind: CatSet
-metadata:
-  name: nginx-backend
-spec:
-  serviceName: nginx-backend
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-        component: backend
-    spec:
-      terminationGracePeriodSeconds: 1
-      containers:
-      - name: nginx
-        image: gcr.io/google_containers/nginx-slim:0.8
-        ports:
-        - containerPort: 80
-          name: web
-        volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
-  volumeClaimTemplates:
-  - metadata:
-      name: www
-      labels:
-        app: nginx
-        component: backend
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
-\end{lstlisting}
+%\newpage
+%\begin{lstlisting}[language=yaml,caption=CatSet资源示例,label=listing:catset-sample]
+%apiVersion: mlhub.njuics.cn/v1alpha1
+%kind: CatSet
+%metadata:
+%  name: nginx-backend
+%spec:
+%  serviceName: nginx-backend
+%  replicas: 3
+%  selector:
+%    matchLabels:
+%      app: nginx
+%  template:
+%    metadata:
+%      labels:
+%        app: nginx
+%        component: backend
+%    spec:
+%      terminationGracePeriodSeconds: 1
+%      containers:
+%      - name: nginx
+%        image: gcr.io/google_containers/nginx-slim:0.8
+%        ports:
+%        - containerPort: 80
+%          name: web
+%        volumeMounts:
+%        - name: www
+%          mountPath: /usr/share/nginx/html
+%  volumeClaimTemplates:
+%  - metadata:
+%      name: www
+%      labels:
+%        app: nginx
+%        component: backend
+%    spec:
+%      accessModes: [ "ReadWriteOnce" ]
+%      resources:
+%        requests:
+%          storage: 1Gi
+%\end{lstlisting}
 
-YAML文件\ref{listing:catset-controller-config}是catset-controller的声明式定义。YAML文件\ref{listing:catset-sample}是一个CatSet资源的示例，CatSet的spec结构与StatefulSet的spec结构完全一样。
 
-\begin{lstlisting}[language=JavaScript,caption=生成Pod和PVC,label=listing:catset]
-module.exports = {
-  handler: (event, context) => {
-    let observed = event.data;
-    let desiredChildren = [];
-    let currentStatus = {};
-    let finalized = false;
-    let catset = observed.parent;
-    // Arrange observed Pods by ordinal.
-    let observedPods = {};
+CatSet的控制器依然用JavaScript实现，期望存在的Pods和PVC（如果有的话）是带编号的，代码\ref{listing:catset-1}为已经存在的Pods根据编号建索引。代码\ref{listing:catset-3}，统计已经就绪的Pods数量，设置CatSet的status，包括当前副本数量（replicas）和就绪副本数量（readyReplicas）。
+
+\begin{lstlisting}[language=JavaScript,caption=为已存在的Pods建索引,label=listing:catset-1,gobble=4]
     if (observed.children && observed.children['Pod.v1']) {
       for (let pod of Object.values(observed.children['Pod.v1'])) {
         let ordinal = getOrdinal(catset.metadata.name, pod.metadata.name);
         if (ordinal >= 0) observedPods[ordinal] = pod;
       }
     }
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript,caption=删除后清理,label=listing:catset-2,gobble=4]
     if (observed.finalizing) {
-      // If the parent is being deleted, scale down to zero replicas.
       catset.spec.replicas = 0;
-      // Mark the finalizer as done if there are no more Pods.
       finalized = (Object.keys(observedPods).length === 0);
     }
-    for (var ready = 0; ready < catset.spec.replicas && isRunningAndReady(observedPods[ready]); ready++) ;
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript,caption=设置当前状态（status）,label=listing:catset-3,gobble=4]
+    for (var ready = 0; ready < catset.spec.replicas && isRunningAndReady(observedPods[ready]); ready++);
     currentStatus = {replicas: Object.keys(observedPods).length, readyReplicas: ready};
-    let desiredPods = {};
+\end{lstlisting}
+
+如代码\ref{listing:catset-4}所示，为了支持滚动更新，还要把Pods按照编号排好序再返回，因为滚动更新是按照调谐结果中子资源列表中的顺序逐个更新的。对于一个Pod，只有编号靠前的Pods全部就绪，它才会被创建或者更新。如果用户减小了spec.replicas，并且当前就绪的Pods数量大于它，就需要删除多余的编号靠后的Pods。一次调谐最多只会增加或者删除一个Pod。当需要删除Pod时，不会删除这个Pod对应的PVC，PVC会在这个CatSet被删除时被清理。
+
+\begin{lstlisting}[language=JavaScript,caption=返回的Pods,label=listing:catset-4,gobble=4]
     for (let ordinal in observedPods) {
       desiredPods[ordinal] = newPod(catset, ordinal);
     }
-    // Fill in one missing Pod if all lower ordinals are Ready.
     if (ready < catset.spec.replicas && !(ready in desiredPods)) {
       desiredPods[ready] = newPod(catset, ready);
     }
-    // If all desired Pods are Ready, see if we need to scale down.
     if (ready === catset.spec.replicas) {
       let maxOrdinal = Math.max(...Object.keys(desiredPods));
       if (maxOrdinal >= catset.spec.replicas) {
         delete desiredPods[maxOrdinal];
       }
     }
-    // List Pods in descending order, since that determines rolling update order.
     for (let ordinal of Object.keys(desiredPods).sort((a, b) => a - b).reverse()) {
       desiredChildren.push(desiredPods[ordinal]);
     }
-    if (catset.spec.volumeClaimTemplates) {
-      let desiredPVCs = {};
-      for (let template of catset.spec.volumeClaimTemplates) {
-        let baseName = `${template.metadata.name}-${catset.metadata.name}`;
-        for (let i = 0; i < catset.spec.replicas; i++) {
-          desiredPVCs[i] = newPVC(`${baseName}-${i}`, template);
-        }
-        // Also generate a desired state for existing PVCs outside the range.
-        // PVCs are retained after scale down, but are deleted with the CatSet.
-        if (observed.children && observed.children['PersistentVolumeClaim.v1']) {
-          for (let pvc of Object.values(observed.children['PersistentVolumeClaim.v1'])) {
-            if (pvc.metadata.name.startsWith(baseName)) {
-              let ordinal = getOrdinal(baseName, pvc.metadata.name);
-              if (ordinal >= catset.spec.replicas) desiredPVCs[ordinal] = newPVC(pvc.metadata.name, template);
-            }
-          }
-        }
-      }
-      desiredChildren.push(. ..Object.values(desiredPVCs));
-    }
-    return {children:desciredChildren, status:currentStatus,finalized:finalized};
-  },
-};
 \end{lstlisting}
-
-CatSet的控制器依然用JavaScript实现，代码段\ref{listing:catset}是主逻辑，需要生成带编号的Pods和PVC（如果有的话），为了支持滚动更新，还要把Pods按照编号排好序再返回，因为滚动更新是按照调谐结果中子资源列表中的顺序逐个更新的。
 
 
 %\section{用例4：Customize钩子的用法}
@@ -1692,13 +1502,14 @@ CatSet的控制器依然用JavaScript实现，代码段\ref{listing:catset}是�
 
 \section{用例对比与分析}
 
+
+图\ref{fig:operator-cl}直观地展示了直接用client-go实现Operator与借助UC实现在工作量上的巨大差距。
+
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.75\textwidth]{pics/operator-line.pdf}\\
   \caption{原版与UC版代码行数比较}\label{fig:operator-cl}
 \end{figure}
-
-图\ref{fig:operator-cl}直观地展示了直接用client-go实现Operator与借助UC实现在工作量上的巨大差距。
 
 原来的sample-controller是用Go语言实现的，总代码行数为1701，剔除使用代码生成工具生成的代码后代码行数为739。而借助UniversalController，可以用JavaScript来编写业务逻辑，并且controller配置和代码加起来也只有58行。对于功能简单的Operator，借助UniversalController可以实现代码量很少的极速开发。
 
@@ -1793,8 +1604,8 @@ Operator一般都不是计算型任务，运行时CPU的占用率极低，特别
 
 \begin{enumerate}
 	\item 针对Operator开发困难的问题，提出一种声明式的通用调谐技术，简化需要编写的代码，大量减少Operator开发者的工作量，免除学习Kubernetes客户端库、Kubernetes API机制库或其他工具的负担，也不用去编写或生成模版代码，而是将精力集中在业务逻辑上，即描述期望状态上。
-	\item 实现了声明式的通用Kubernetes Operator，UniverslController。该工具具有声明式的资源监视（watch），声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
-	\item 基于UniversalController重新实现了一些现有的Operator，证明了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
+	\item 实现了声明式的通用Kubernetes Operator，UniverslController。该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性。用户不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
+	\item 基于UniversalController重新实现了一些现有的Operators，证明了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发。同时性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
 \section{未来展望}
@@ -1835,10 +1646,12 @@ Operator一般都不是计算型任务，运行时CPU的占用率极低，特别
 \end{authorinfo}
 % 论文作者教育经历列表，按日期从近到远排列，不包括将要申请的学位。
 \begin{education}
+\item[2018年9月 --- 2021年6月] 南京大学计算机科学与技术系 \hfill 硕士
 \item[2014年9月 --- 2018年6月] 中国矿业大学计算机科学与技术系 \hfill 本科
 \end{education}
 % 论文作者在攻读学位期间所发表的文章的列表，按发表日期从近到远排列。
 \begin{publications}
+\item 发明技术专利：一种声明式的通用Kubernetes调谐方法（专利号：202110558547.3）
 \item 软件著作权： 人机物融合资源管理云平台（登记号：2020SR1657985），2020年11月26日
 \end{publications}
 
