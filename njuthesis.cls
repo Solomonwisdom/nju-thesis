@@ -419,7 +419,7 @@
   \item[\hskip\labelsep\textbf{#1}\@addpunct{:}]\ignorespaces
 }{\endtrivlist\@endpefalse}
 
-\newtheorem{algorithm}{\njut@cap@algorithm}[chapter]
+%\newtheorem{algorithm}{\njut@cap@algorithm}[chapter]
 \renewcommand*{\thedefinition}{\dashnumber{\thechapter}{\arabic{definition}}}
 \renewcommand*{\thetheorem}{\dashnumber{\thechapter}{\arabic{theorem}}}
 \renewcommand*{\theaxiom}{\dashnumber{\thechapter}{\arabic{axiom}}}
