@@ -194,7 +194,7 @@
 % - \clasifiedlevel，表示机密级：此级别的文献内容涉及重要的国家秘密 。
 % - \mostconfidentiallevel，表示绝密级：此级别的文献内容涉及最重要的国家秘密。
 % 此属性可选，默认为\openlevel，即公开级。
-\securitylevel{\controllevel}
+\securitylevel{\openlevel}
 % 设置论文按照《国际十进分类法UDC》的分类编号
 % 该编号可在下述网址查询：http://www.udcc.org/udcsummary/php/index.php?lang=chi
 \udc{004.72}
@@ -322,10 +322,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 论文的中文摘要
 \begin{abstract}
-Kubernetes是最受欢迎的容器编排系统，已经成为分布式资源调度和自动化运维的事实标准。为了适应成千上万的应用的工作模式，Kubernetes Operators被官方推荐作为在Kubernetes中打包、部署和管理应用的方法。本文工作针对Kubernetes Operator开发中存在的模版代码冗余、非功能性代码繁多、非Go语言使用者开发困难等问题，研究了Operator的工作原理，提出了一种声明式的通用Kubernetes Operator，将其命名为UniversalController，简称UC，从而实现更简单地开发和部署自定义控制器。具体而言，本文工作的主要内容包括：
+Kubernetes是最受欢迎的容器编排系统，已经成为分布式资源调度和自动化运维的事实标准。为了适应成千上万的应用的工作模式，Kubernetes Operators被官方推荐作为在Kubernetes中打包、部署和管理应用的方法。本文工作针对Kubernetes Operator开发中存在的模版代码冗余、非功能性代码繁多、非Go语言使用者开发困难等问题，提出了一种声明式的通用Kubernetes Operator，将其命名为UniversalController，简称UC，从而实现更简单地开发和部署自定义控制器。具体而言，本文工作的主要内容包括：
 \begin{enumerate}
 	\item 针对Operator开发困难的问题，提出一种声明式的通用Kubernetes调谐（reconciliation）技术，封装编写自定义控制器的一般部分，将核心的自定义调谐逻辑单独抽取出来让开发者实现；添加一种新的自定义资源，用于描述自定义控制器，自定义控制器通过该自定义资源动态定义，在运行时调用实际提供调谐逻辑的服务，显著降低了Operator开发者的工作负担，帮助开发者将精力集中在核心调谐逻辑上。
-	\item 实现了声明式的通用Kubernetes Operator，UC，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
+	\item 实现了声明式的通用Kubernetes Operator，UC，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监视的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。
 	\item 基于UC重新实现了一些现有的Kubernetes Operators，验证了UC可以显著缩减开发工作量，并且适用于大部分场景的开发，并通过性能测试验证了它能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
@@ -337,7 +337,7 @@ Kubernetes是最受欢迎的容器编排系统，已经成为分布式资源调�
 % 论文的英文摘要
 \begin{englishabstract}
 % 英文关键词。关键词之间用英文半角逗号隔开，末尾无符号。
-Kubernetes is the most popular container orchestration system for automating application deployment and has become the fact standard for distributed resource scheduling and automated operations and maintenance. To accommodate the working patterns of thousands of applications, Kubernetes Operators are officially recommended as the way to package, deploy and manage applications in Kubernetes, and it is the most mainstream way for users to scale Kubernetes. The work in this paper addresses the problems of Kubernetes Operator development, such as steep learning curve, extensive non-functional code, and redundant template code. This paper investigates how Operators work, and proposes a declarative universal Kubernetes Operator, which is named UniversalController, or UC for short. UniversalController is helpful for developing and deploying custom controllers.Specifically, the main elements of the work in this paper include:
+Kubernetes is the most popular container orchestration system for automating application deployment and has become the fact standard for distributed resource scheduling and automated operations and maintenance. To accommodate the working patterns of thousands of applications, Kubernetes Operators are officially recommended as the way to package, deploy and manage applications in Kubernetes, and it is the most mainstream way for users to scale Kubernetes. The work in this paper addresses the problems of Kubernetes Operator development, such as steep learning curve, extensive non-functional code, and redundant template code. This paper proposes a declarative universal Kubernetes Operator, which is named UniversalController, or UC for short. UniversalController is helpful for developing and deploying custom controllers.Specifically, the main elements of the work in this paper include:
 
 \begin{enumerate}
 	\item To address the problem of difficult Operator development, we propose a declarative universal Kubernetes reconciliation technique that encapsulates the general part of writing custom controllers, extracts the core custom reconciliation logic separately for developers to implement and adds a custom resource to describe the custom controller.The custom controller is dynamically defined by the custom resource and invokes the service that actually provides the tuning logic at runtime.The technology significantly reduces the workload of Operator developers and helps them focus on the core reconciliation logic. 
@@ -396,8 +396,8 @@ Kubernetes具有很好的开放性与可拓展性，开发人员可以通过Cust
 
 \begin{enumerate}
 	\item 针对Operator开发中存在的模版代码冗余、非功能性代码繁多、非Go语言使用者开发困难等问题，提出一种声明式的通用调谐技术，封装编写自定义控制器的一般部分，将核心的自定义调谐逻辑单独抽取出来让开发者实现；添加一种新的自定义资源，用于描述自定义控制器，自定义控制器通过该自定义资源动态定义，在运行时调用实际提供调谐逻辑的服务。该技术简化需要编写的代码，大量减少Operator开发者的工作量，帮助开发者将精力集中在业务逻辑上，即描述期望状态上。
-	\item 基于声明式的通用调谐技术实现了声明式的通用Kubernetes Operator，UniverslController，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。该工具帮助开发者免除学习Kubernetes客户端库、控制器抽象库或其他工具的负担，也消除了编写或生成模版代码的必要。
-	\item 基于UniversalController重新实现了一些现有的Operators，验证了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发，并通过性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
+	\item 基于声明式的通用调谐技术实现了声明式的通用Kubernetes Operator，UniverslController，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监视的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。该工具帮助开发者免除学习Kubernetes客户端库、控制器抽象库或其他工具的负担，也消除了编写或生成模版代码的必要。
+	\item 基于UniversalController重新实现了一些现有的Operators，验证了UniversalController可以显著缩减开发工作量，并且适用于大部分场景的开发，并通过性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
 
@@ -456,7 +456,7 @@ IaC的相关工具大致分为以下四类\cite{whatisiac}。
 
 \section{状态调谐}\label{section:reconciliation}
 
-在这一节中，我们将探讨一种在大多数声明式IaC工具和系统中常见的模式，并从一般的角度讨论其变化和用途。这种模式被称为状态调谐（state reconciliation）。
+在这一节中，我们将探讨一种在大多数声明式IaC工具和系统中常见的模式，并从一般的角度讨论其变化和用途，这种模式被称为状态调谐（state reconciliation）。
 
 \subsection{从实际状态到期望状态}
 
@@ -468,13 +468,13 @@ IaC的相关工具大致分为以下四类\cite{whatisiac}。
   \caption{状态调谐}\label{fig:ssr}
 \end{figure}
 
-图\ref{fig:ssr}中的这种模式就是状态调谐，它被定义为使源状态与目标状态一致的过程。在本文中，状态调谐将主要在软件应用程序和基础设施的管理中被考虑，因此，在大多数情况下，目标状态将被视为所需的、开发者定义的状态，如基础设施代码，而实际状态将被视为被管理的平台、基础设施或应用的状态。
+图\ref{fig:ssr}中的这种模式就是状态调谐，它被定义为使实际状态与目标状态一致的过程。在本文中，状态调谐将主要在软件应用程序和基础设施的管理中被考虑，因此，在大多数情况下，目标状态将被视为所需的、开发者定义的状态，如基础设施代码，而实际状态将被视为被管理的平台、基础设施或应用的状态。
 
 \subsection{连续状态调谐}\label{section:continus-reconciliation}
 
-在很多情况下，调谐过程是按需触发的（例如，由开发者手动触发，或因基础设施代码的新变化而自动触发），并执行一次，直至完成。许多IaC工具，包括Terraform，都采用这种方法。然而，这种方式有一个缺点，那就是只有在调谐过程结束后，两个状态（期望的和实际的）的一致性才能实现。在任何时候，某些事件，例如绕过IaC的对基础设施进行的手动变更，都可能导致两个状态之间的不一致和漂移。通过这种一次性的方法，导致的不一致直到下一次触发调谐过程时才会被解决，而这可能要到下一次对IaC代码修改时才会发生。更先进的系统，如Kubernetes中的调谐功能，能够通过不断观察调谐循环中的状态并做出反应，持续尝试确保一致性。这种方法在本论文中被称为连续状态调谐。
+在很多情况下，调谐过程是按需触发的（例如，由开发者手动触发，或因基础设施代码的新变化而自动触发），许多IaC工具，包括Terraform，都采用这种方法。这种方式有一个缺点，那就是只有在一次调谐过程结束后，两个状态（期望的和实际的）的一致性才能实现。在任何时候，某些事件，例如绕过IaC对基础设施进行的手动变更，都可能导致两个状态之间的不一致和漂移。通过这种一次性的方法，导致的不一致直到下一次触发调谐过程时才会被解决，而这可能要到下一次对IaC代码修改时才会发生。更先进的系统，如Kubernetes中的调谐功能，能够通过不断观察调谐循环中的状态并做出反应，持续尝试确保一致性。这种方法在本论文中被称为连续状态调谐。
 
-一个基本的实现方法是在定时器的提醒下定期执行一个新的调谐过程。虽然朴素，但这个解决方案是合适的，特别是在变化率较低的环境中。然而，为了及时对变化做出反应，环境中的变化越频繁，调谐的时间间隔就需要越短，这会产生负载和性能影响。
+一个基本的实现方法是在定时器的提醒下定期执行一个新的调谐过程。这个解决方案很朴素但是在变化率较低的环境中很合适。然而，为了及时对变化做出反应，环境中的变化越频繁，调谐的时间间隔就需要越短，这会产生负载和性能影响。
 
 一个改进方法是以基于事件的方式执行调谐过程，每次调谐作为对表明发生变化的事件的反应。例如，如果使用图\ref{fig:IaC}中的IaC工作流程，那么期望状态方面的事件可以是版本控制中的一个新变更。此外，调谐系统也需要接收关于基础设施（实际状态）中的资源变化的事件并作出反应。通过对来自双方（期望状态和实际状态）的事件的反应进行调谐，调谐过程只在需要的时候运行，这可以大大改善性能并减少负载。基于事件的方法是否可以实现，取决于实际状态背后的平台，它必须支持产生关于其资源变化的事件。Kubernetes系统原生支持这一点，这是其主要卖点之一。
 
@@ -591,7 +591,7 @@ CRD的规范还需要为新资源指定至少一个版本。版本中需要指�
 
 \paragraph{Scope}
 
-CRD还必须指定新资源的范围。一般来说，在Kubernetes中，一个特定的资源类型可以是命名空间范围的，即每个对象必须属于某个命名空间，或者是集群范围的，即每个对象是全局的。在CRD中，这是用范围参数指定的，如YAML文件\ref{listing:1}的第17行。
+CRD还必须指定新资源的作用范围。一般来说，在Kubernetes中，一个特定的资源类型可以是命名空间范围的，即每个对象必须属于某个命名空间，或者是集群范围的，即每个对象是全局的。在CRD中，这是用范围参数指定的，如YAML文件\ref{listing:1}的第17行。
 
 \subsection{自定义控制器}
 
@@ -616,18 +616,18 @@ client-go是最成熟的Kubernetes客户端库，它和Kubernetes自身一样都
 
 该库封装了几个抽象和较小的包，便于实现Kubernetes的集成和与Kubernetes API的通信。有三个包与基本的Kubernetes API通信有关\cite{controllerclientgo}：
 
-\begin{itemize}
-	\item kubernetes包，提供静态（和静态类型）的客户端，可用于对Kubernetes API执行涉及Kubernetes原生资源类型的操作。
-	\item dynamic包，它提供了一个动态客户端，能够对任何资源类型（原生和自定义）进行通用操作。
+\begin{enumerate}
+	\item kubernetes包，提供静态（和静态类型）的客户端，可用于对Kubernetes API执行涉及Kubernetes原生资源类型的操作；
+	\item dynamic包，它提供了一个动态客户端，能够对任何资源类型（原生和自定义）进行通用操作；
 	\item transport包，在与Kubernetes通信时帮助处理低级别的传输细节，如使用有效的认证建立连接等。
-\end{itemize}
+\end{enumerate}
 
 此外，由于client-go在整个Kubernetes代码库中被使用，包括复杂的场景，它还附带了额外的工具、实用程序、对象和抽象，以简化Kubernetes集成。
 
 图\ref{fig:client-go-controller-interaction}展示了使用clieng-go编写的控制器的工作方式。首先介绍一下client-go提供给开发者的组件：
 \begin{enumerate}
-	\item \textbf{反射器（Reflector）}：反射器监视着Kubernetes API中的指定资源类型（Kind）。完成这项工作的方法（function）是``ListAndWatch''。监视的对象可以是内置的原生资源，也可以是自定义资源。当反射器通过监视API收到有新资源诞生的通知时，它使用相应的listing API获得该对象，调用``watchHandler''方法，将其放入``Delta FIFO''队列中。
-	\item \textbf{通知器（Informer）}：通知器从``Delta FIFO''队列中弹出对象。它的工作是保存对象以便以后检索，并向自定义控制器传递对象。
+	\item \textbf{反射器（Reflector）}：反射器监视着Kubernetes API中的指定资源类型（Kind）。完成这项工作的方法（function）是``ListAndWatch''。监视的对象可以是内置的原生资源，也可以是自定义资源。当反射器通过监视API收到有新资源诞生的通知时，它使用相应的listing API获得该对象，调用``watchHandler''方法，将其放入``Delta FIFO''队列中；
+	\item \textbf{通知器（Informer）}：通知器从``Delta FIFO''队列中弹出对象。它的工作是保存对象以便以后检索，并向自定义控制器传递对象；
 	\item \textbf{索引器（Indexer）}：索引器提供索引对象的功能。一个典型的索引用例是基于对象标签创建索引。索引器可以基于几个索引功能来维护索引。索引器使用一个线程安全的数据存储来存储对象和它们的键。默认会使用Store类型中一个名为MetaNamespaceKeyFunc的方法来生成键，该方法将一个对象的键生成为该对象的<命名空间>/<名称>组合。
 \end{enumerate}
 
@@ -635,8 +635,8 @@ client-go是最成熟的Kubernetes客户端库，它和Kubernetes自身一样都
 
 而自定义控制器中有以下组件：
 \begin{enumerate}
-	\item \textbf{资源事件处理器（Resource Event Handlers）}：资源事件处理器是回调函数，当通知器（Informer）向控制器传递一个对象时，它将被调用。编写这些函数的典型模式是获取被传递对象的键，并将该键排入工作队列（workqueue）等待进一步的处理。
-	\item \textbf{工作队列（Workqueue）}：工作队列将对象的传递与处理脱钩，接受到对象后不会立即处理而是放入队列中。
+	\item \textbf{资源事件处理器（Resource Event Handlers）}：资源事件处理器是回调函数，当通知器（Informer）向控制器传递一个对象时，它将被调用。编写这些函数的典型模式是获取被传递对象的键，并将该键排入工作队列（workqueue）等待进一步的处理；
+	\item \textbf{工作队列（Workqueue）}：工作队列将对象的传递与处理脱钩，接受到对象后不会立即处理而是放入队列中；
 	\item \textbf{处理程序（Process Item）}：处理程序被用于处理工作队列中的项目，它通常使用索引器来检索与键对应的对象。
 \end{enumerate}
 
@@ -770,7 +770,7 @@ for _, subresource := range subresources {
   \caption{UniversalController工作流程}\label{fig:UniversalController-Workflow}
 \end{figure}
 
-图\ref{fig:UniversalController-Workflow}是该技术的工作流程。其中监视资源以及为了向期望状态演进而对资源增删改查的操作都是由基于该技术实现的UniversalController负责的，开发者只需要编写自定义调谐逻辑，计算并返回期望状态（state）与父资源状态（status）。借助声明式的通用Kubernetes调谐技术，一个Operator的开发流程会简化成如图\ref{fig:uc-coding-operator}所示。图\ref{fig:uc-coding-operator}中的Kubeless是一个serverless工具，用于将一个函数部署成一个网络服务。
+图\ref{fig:UniversalController-Workflow}是该技术的工作流程。其中监视资源以及为了向期望状态演进而对资源增删改查的操作都是由基于该技术实现的UC负责的，开发者只需要编写自定义调谐逻辑，计算并返回期望状态（state）与父资源状态（status）。借助声明式的通用Kubernetes调谐技术，一个Operator的开发流程会简化成如图\ref{fig:uc-coding-operator}所示。图\ref{fig:uc-coding-operator}中的Kubeless是一个serverless工具，用于将一个函数部署成一个网络服务。
 
 
 \begin{figure}[htbp]
@@ -832,8 +832,8 @@ spec:
 UC CRD是本文提供的声明式API，通过CustomResourceDefinition注册在Kubernetes API中。通过创建一个UC资源，可以很方便的定制一种控制器，它根据父对象中指定的期望状态管理一组子对象，这也是最常见的控制器类型，像Deployment、StatefulSet、TFJob、PytorchJob的控制器都是符合这种模式的。UC CRD是对控制器的高级抽象，包含了一个控制器运行时需要知道的各项信息，例如事件配置、更新策略和调谐接口访问地址。开发者只需要填写好各项字段就能声明式地创建想要的控制器。UC CRD包含以下接口：
 
 \begin{enumerate}
-	\item \textbf{声明式的监视}：开发者只需要填写好parentResource对象和childResources对象数组，UniversalController就会对这些资源进行监视，订阅它们的相关事件。
-	\item \textbf{声明式的更新策略}：childResources对象数组中的每个childResource对象都有一个updateStrategy对象，通过设置它实现声明式的更新策略，支持OnDelete、Recreate、InPlace、 RollingRecreate、RollingInPlace。
+	\item \textbf{声明式的监视}：开发者只需要填写好parentResource对象和childResources对象数组，UC就会对这些资源进行监视，订阅它们的相关事件；
+	\item \textbf{声明式的更新策略}：childResources对象数组中的每个childResource对象都有一个updateStrategy对象，通过设置它实现声明式的更新策略，支持OnDelete、Recreate、InPlace、 RollingRecreate、RollingInPlace；
 	\item \textbf{声明式的调谐逻辑入口}：自定义调谐逻辑是唯一需要开发者编码实现的模块，开发者在这里只需要关心实际业务逻辑，开发完成后将其部署成一个web服务，将服务地址填入UC CRD的相应字段即可。如\ref{section:dur}节所介绍的那样，开发者在编码过程中只需要描述期望存在的资源即可，而不需要给出具体操作以确保它们的存在，这个过程本质上也是声明式的。
 \end{enumerate}
 
@@ -1121,7 +1121,7 @@ Customize钩子的响应体只有一个字段relatedResources，存放了一组J
 如果在新旧资源中都被设置的字段的值类型是字典，复用以上逻辑合并即可；如果是列表，需要做特殊处理。对于列表，首先要检测这个列表是否是``关联列表''，如果不是，用新值替换旧值；如果是，进行合并操作。关联列表是一个对象的列表，它应该被视为字段一样处理，但由于JSON/YAML的限制，它在序列化后看起来与有序列表一样。对于原生资源，``kubectl apply''通过配置来确定哪些列表是关联列表，对如何处理它们每个字段进行硬编码，但是目前还没有机制让CRD指定这种列表处理方式，所以kubectl apply假设所有的列表都是``原子（atomic）''的，不应该被合并，只能完全替换。服务端应用遵循约定（convention）而不是配置：只要CRD满足约定条件，它的一些字段就应该当做关联列表来处理。具体来说，当且仅当满足以下所有条件时，一个列表被检测为一个关联列表。
 
 \begin{enumerate}
-	\item 列表中的所有项都是JSON对象（不是标量，也不是其他列表）。
+	\item 列表中的所有项都是JSON对象（不是标量，也不是其他列表）；
 	\item 列表中的所有JSON对象都有一些共同的字段名，且该字段名是常见的合并键之一（最常见的是name）。
 \end{enumerate}
 
@@ -1174,10 +1174,10 @@ UC控制器监视着UC类型的资源，提供了UC相关的服务，同时管�
 
 代码段\ref{listing:syncparent}展示了父资源控制器对父资源的同步过程：
 \begin{enumerate}
-	\item claimChildren方法会通过标签选择器找到所有的已经存在的子资源。
-	\item 如果Customize钩子非空，通过Customize钩子找到相关资源。
-	\item 将父资源、已经存在的子资源、相关资源放入同步钩子请求体中，调用同步钩子，得到调谐结果，其中包含需要设置的父资源状态（status）和期望存在的子资源，
-	\item 先比较已经存在的子资源和期望的子资源，如果一个资源已经存在，但是与期望不一致，就把它们两个当做JSON对象合并，之后根据更新策略更新得到合并结果；如果一个期望的资源还不存在，就创建它，其实就是执行了服务端应用。
+	\item claimChildren方法会通过标签选择器找到所有的已经存在的子资源；
+	\item 如果Customize钩子非空，通过Customize钩子找到相关资源；
+	\item 将父资源、已经存在的子资源、相关资源放入同步钩子请求体中，调用同步钩子，得到调谐结果，其中包含需要设置的父资源状态（status）和期望存在的子资源；
+	\item 先比较已经存在的子资源和期望的子资源，如果一个资源已经存在，但是与期望不一致，就把它们两个当做JSON对象合并，之后根据更新策略更新得到合并结果；如果一个期望的资源还不存在，就创建它，其实就是执行了服务端应用；
 	\item 最后更新父资源状态。
 \end{enumerate}
 
@@ -1185,10 +1185,10 @@ UC控制器监视着UC类型的资源，提供了UC相关的服务，同时管�
 \subsection{更新策略介绍}
 UC提供了很多更新策略，开发者可以通过声明式接口使用它们，而不用写任何代码。现有的5种更新策略如下：
 \begin{enumerate}
-	\item 待删除后更新（OnDelete）：不更新现有的子资源，直到它被其他的客户端（例如kubectl）删除。
-	\item 立刻重建（ReCreate）：立即删除任何不符合期望状态的子资源，并根据期望状态重新创建。
-	\item 就地更新（InPlace）：立刻就地更新任何不符合期望状态的子资源。
-	\item 滚动重建（RollingRecreate）：每次调谐删除一个与期望状态不同的子资源，并在处理下一个子资源之前根据期望状态重建它。在任意时刻，如果已经更新的子资源中有一个或多个状态检查失败，则暂停滚动更新。
+	\item 待删除后更新（OnDelete）：不更新现有的子资源，直到它被其他的客户端（例如kubectl）删除；
+	\item 立刻重建（ReCreate）：立即删除任何不符合期望状态的子资源，并根据期望状态重新创建；
+	\item 就地更新（InPlace）：立刻就地更新任何不符合期望状态的子资源；
+	\item 滚动重建（RollingRecreate）：每次调谐删除一个与期望状态不同的子资源，并在处理下一个子资源之前根据期望状态重建它。在任意时刻，如果已经更新的子资源中有一个或多个状态检查失败，则暂停滚动更新；
 	\item 滚动就地更新（RollingInPlace）：每次就地更新一个与期望状态不同的子资源。如果已经更新的子资源中有一个或多个状态检查失败，则暂停滚动更新。
 \end{enumerate}
 
@@ -1576,8 +1576,8 @@ Operator一般都不是计算型任务，运行时CPU的占用率极低，特别
 
 \begin{enumerate}
 	\item 针对Operator开发中存在的模版代码冗余、非功能性代码繁多、非Go语言使用者开发困难等问题，提出一种声明式的通用调谐技术，封装编写自定义控制器的一般部分，将核心的自定义调谐逻辑单独抽取出来让开发者实现；添加一种新的自定义资源，用于描述自定义控制器，自定义控制器通过该自定义资源动态定义，在运行时调用实际提供调谐逻辑的服务。该技术简化需要编写的代码，大量减少Operator开发者的工作量，帮助开发者将精力集中在业务逻辑上，即描述期望状态上。
-	\item 基于声明式的通用调谐技术实现了声明式的通用Kubernetes Operator，UniverslController，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监听的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。该工具帮助开发者免除学习Kubernetes客户端库、控制器抽象库或其他工具的负担，也消除了编写或生成模版代码的必要。
-	\item 基于UniversalController重新实现了一些现有的Operators，验证了UniversalController可以极大的缩减开发工作量，并且适用于大部分场景的开发，并通过性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
+	\item 基于声明式的通用调谐技术实现了声明式的通用Kubernetes Operator，UniverslController，该工具具有声明式的资源监视，声明式的调谐、声明式的更新策略和语言无关的特性，开发者不需要编写任何与Kubernetes交互的代码，只需要在YAML文件中描述需要监视的资源、使用的更新策略以及在调谐代码段中描述期望的状态即可。该工具帮助开发者免除学习Kubernetes客户端库、控制器抽象库或其他工具的负担，也消除了编写或生成模版代码的必要。
+	\item 基于UniversalController重新实现了一些现有的Operators，验证了UniversalController可以显著缩减开发工作量，并且适用于大部分场景的开发，并通过性能测试验证了它还能在多自定义控制器部署的环境中减少内存消耗和kube-apiserver的负载。
 \end{enumerate}
 
 
